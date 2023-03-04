@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="Basic File">
-      <change afterPath="$PROJECT_DIR$/demo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/Lib/site-packages/yahoofinancials-1.8.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/Lib/site-packages/yahoofinancials-1.8.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/Lib/site-packages/yahoofinancials-1.8.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/Lib/site-packages/yahoofinancials-1.8.dist-info/REQUESTED" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/Lib/site-packages/yahoofinancials-1.8.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/Lib/site-packages/yahoofinancials-1.8.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/Lib/site-packages/yahoofinancials/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/Lib/site-packages/yahoofinancials/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +97,21 @@
       <option name="project" value="LOCAL" />
       <updated>1677790669687</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Basic File">
+      <created>1677878748933</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677878748933</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Basic File">
+      <created>1677878776477</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677878776477</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

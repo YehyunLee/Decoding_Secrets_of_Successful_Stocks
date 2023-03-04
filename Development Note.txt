@@ -1,0 +1,19 @@
+This is Yehyun's personal Development Note.
+You may ignore this file.
+
+What's Done:
+
+<March 1~3, 2023>
+- Made Discord server & Connected to Gihub Webhooks
+- Made Github & Learned how to use Git
+- Made virtual packages
+- Made requirements.txt
+- Research & Wrote topic ideas
+- Testing and filtering factors
+- Wrote general idea of what program will do in step by step
+
+What's done as team:
+
+<March 3, 2023>
+- Hisham is making a diagram.
+- Sam, Hisham, and I am having a meeting and write Proposal 1.
