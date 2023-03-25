@@ -12,8 +12,18 @@ What's Done:
 - Testing and filtering factors
 - Wrote general idea of what program will do in step by step
 
-What's done as team:
-
 <March 3, 2023>
-- Hisham is making a diagram.
-- Sam, Hisham, and I am having a meeting and write Proposal 1.
+- Hisham is making a diagram (Completed: March 6)
+- Sam, Hisham, and I am having a meeting and write Proposal 1
+
+<March 4~5>
+- Done many meetings
+- Decided APIs
+- Took 2 days to test APIs and write demo codes 
+- Finished writing Goal, Motivation, Required Knowledge with Hisham
+- Sam is working on LaTex file. Moving what I and Hisham wrote on Doc to Latex
+
+<March 6>
+- Rewrote Question and Goal
+- Rewrote Appendix, Definitions and Formulas
+- Very long meeting with Hisham. Discussed computation and architecture plan
