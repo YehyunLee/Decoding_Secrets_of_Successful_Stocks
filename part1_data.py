@@ -60,7 +60,7 @@ def retrieve_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -
     return sorted_list
 
 
-def get_one_data_from_link(link: str) -> pd.DataFrame | pd.Series:
+def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
     """Get historical data of stock.
 
     Preconditions:
@@ -72,10 +72,18 @@ def get_one_data_from_link(link: str) -> pd.DataFrame | pd.Series:
     df = pd.concat([df.columns.to_frame().T, df], ignore_index=True)
     df.columns = range(len(df.columns))
     df = df[1:]
+    # Average price and stock price is on the same page, thus, I need to split the cases.
+    if get_price is False:
+        if 'stock-price-history' in link:
+            df = df.iloc[:, [0, 1]]  # Get average price
+        else:
+            df = df.iloc[:, [0, -1]]  # Get other factors data
+    else:
+        df = df.iloc[:, [0, -2]]  # Get stock price
     return df
 
 
-def historical_factor_datas_for_stock(stock: str) -> pd.DataFrame | pd.Series:
+def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
     """
     Return DataFrame of historical factor of stock.
 
@@ -87,13 +95,63 @@ def historical_factor_datas_for_stock(stock: str) -> pd.DataFrame | pd.Series:
     response = requests.get(url)
     new_url = str(response.url)
 
-    links = ['pe-ratio', 'price-sales', 'price-book', 'net-worth', 'roe', 'roa', 'return-on-tangible-equity',
-             'number-of-employees', 'current-ratio', 'quick-ratio', 'long-term-debt', 'total-liabilities',
+    links = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
+             'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
              'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
              'net-income', 'shares-outstanding', 'stock-price-history']
+    # stock-price-history here gets average price as well as stock price
 
-    list_of_df = []
+    dict_df = {}
     for link in links:
         combined_link = str(new_url + link)
-        list_of_df.append((link, get_one_data_from_link(combined_link)))
-    return list_of_df
+        if link == 'stock-price-history':
+            # Rename to average_price
+            dict_df['average-price'] = obtain_factor_data(combined_link, get_price=False)
+        else:
+            dict_df[link] = obtain_factor_data(combined_link, get_price=False)
+    # Get price of stock
+    dict_df['price'] = obtain_factor_data(str(new_url + 'stock-price-history'), get_price=True)
+    return dict_df
+
+
+def correlation(dict_df: dict[str, pd.DataFrame | pd.Series], factor: str) -> pd.DataFrame:
+    df1 = dict_df['price']
+    df2 = dict_df[factor]
+    min_rows = min(df1.shape[0], df2.shape[0])
+    df1 = df1.iloc[:min_rows]
+    df2 = df2.iloc[:min_rows]
+    merged_df = pd.concat([df1, df2.iloc[:, -1]], axis=1)
+    merged_df.dropna(inplace=True)
+    ###########################
+
+    merged_df = merged_df.iloc[:, -2:]
+    merged_df[merged_df.columns[0]] = merged_df[merged_df.columns[0]].astype(float)
+    try:
+        merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].astype(float)
+    except ValueError:
+        merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].str.replace('$', '', regex=True)
+        merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].str.replace('%', '', regex=True)
+        merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].str.replace(',', '', regex=True).astype(float)
+
+    price_vs_factor_correlation = merged_df.corr(numeric_only=True)  # By default, pearson method.
+    # method = 'pearson', 'spearman'
+    # cash-on-hand
+
+    return price_vs_factor_correlation[price_vs_factor_correlation.columns[1]][price_vs_factor_correlation.columns[0]]
+
+
+def all_factors_correlation(stock: str):
+    dict_df = get_factors_data(stock)
+    links = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
+             'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
+             'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
+             'net-income', 'shares-outstanding', 'average-price']
+    list_of_correlations = []
+    for i in links:
+        list_of_correlations.append((i, correlation(dict_df, i)))
+    return list_of_correlations
+# sort lambda
+
+
+# standard deviation -> dataframe.std()
+# df['Col'].std()
