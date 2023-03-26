@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="March 26th.">
-      <change afterPath="$PROJECT_DIR$/part2_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/streamlit.py" afterDir="false" />
+    <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="Basic File">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part1_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_data.py" afterDir="false" />
-    </list>
-    <list id="0d535de3-4c42-4c40-961a-724c899f229b" name="Changes by Wonjae" comment="">
-      <change beforePath="$PROJECT_DIR$/part1_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,30 +23,12 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="backup_code_do_not_delete" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Packages/Lib/site-packages/pandas/core/reshape/concat.py" root0="SKIP_INSPECTION" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/part1_data.py">
-      <ranges>
-        <range start1="12" end1="13" start2="12" end2="13" changelist="0d535de3-4c42-4c40-961a-724c899f229b" />
-        <range start1="45" end1="46" start2="45" end2="46" changelist="0d535de3-4c42-4c40-961a-724c899f229b" />
-        <range start1="57" end1="58" start2="57" end2="58" changelist="0d535de3-4c42-4c40-961a-724c899f229b" />
-        <range start1="61" end1="61" start2="61" end2="69" changelist="0d535de3-4c42-4c40-961a-724c899f229b" />
-        <range start1="62" end1="63" start2="70" end2="71" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
-        <range start1="74" end1="74" start2="82" end2="90" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
-        <range start1="77" end1="78" start2="93" end2="94" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
-        <range start1="89" end1="91" start2="105" end2="107" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
-        <range start1="93" end1="93" start2="109" end2="110" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
-        <range start1="94" end1="95" start2="111" end2="112" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
-        <range start1="97" end1="99" start2="114" end2="165" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,26 +38,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings>
-        <option name="useSoftWraps" value="true" />
-      </console-settings>
-    </option>
-  </component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\glad7\PycharmProjects\CSC111 Project\Test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.part1_data">
+  <component name="RunManager" selected="Python.test3">
     <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -102,34 +72,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="part1_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="possible_factor_identifier" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part1_data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="streamlit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="CSC111 Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/streamlit.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/possible_factor_identifier.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -163,6 +118,9 @@
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -179,11 +137,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.part1_data" />
-        <item itemvalue="Python.streamlit" />
         <item itemvalue="Python.test3" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.possible_factor_identifier" />
         <item itemvalue="Python.demo" />
-        <item itemvalue="Python.demo" />
+        <item itemvalue="Python.test3" />
       </list>
     </recent_temporary>
   </component>
@@ -217,35 +175,7 @@
       <option name="project" value="LOCAL" />
       <updated>1677878776477</updated>
     </task>
-    <task id="LOCAL-00004" summary="Basic File">
-      <created>1679761009093</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1679761009093</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Basic File">
-      <created>1679762661231</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1679762661231</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Basic File">
-      <created>1679762793885</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1679762793885</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Basic File">
-      <created>1679779003222</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1679779003222</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -261,7 +191,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic File" />
-    <MESSAGE value="March 26th." />
-    <option name="LAST_COMMIT_MESSAGE" value="March 26th." />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic File" />
   </component>
 </project>
