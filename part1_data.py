@@ -10,7 +10,7 @@ stocks = ['AAPL', 'MSFT']
 train_end_date = '2015-03-25'
 
 
-def retrieve_percentage_growth(stock: str, end_date: str) -> float:
+def get_percentage_growth(stock: str, end_date: str) -> float:
     """
     Returns the percentage growth of the stock from start date (the year 2009) to end_date (the user inputs end_date)
 
@@ -43,7 +43,7 @@ def retrieve_percentage_growth(stock: str, end_date: str) -> float:
     # return calc_percentage
 
 
-def retrieve_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> list[tuple[str, float]]:
+def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> list[tuple[str, float]]:
     """
     Returns a sorted list of tuples based on the percentage growth of each stock (biggest to smallest).
     Each tuple is of the form (stock, growth percentage).
@@ -55,9 +55,17 @@ def retrieve_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -
     """
     list_so_far = []
     for stock in stock_list:
-        list_so_far.append((stock, retrieve_percentage_growth(stock, end_date)))
+        list_so_far.append((stock, get_percentage_growth(stock, end_date)))
     sorted_list = sorted(list_so_far, key=lambda x: x[1], reverse=True)
     return sorted_list
+
+
+def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
+    """
+    Returns good stocks (top half) list from retrieve_percentage_growth_of_stocks output
+    """
+    half_list = sorted_list[:len(sorted_list)//2]
+    return half_list
 
 
 def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
