@@ -29,6 +29,7 @@ class RecommendationTree:
     correlation: Optional[float]
     _left_subtree: Optional[RecommendationTree]
     _right_subtree: Optional[RecommendationTree]
+    _list_of_stocks: Optional[list]
 
     def __init__(self, factor: Optional[str], correlation: Optional[float] = TREE_START_CORR) -> None:
         """Initialize a new RecommendationTree containing only the given move value.
@@ -40,11 +41,13 @@ class RecommendationTree:
             self.correlation = None
             self._left_subtree = None
             self._right_subtree = None
+            self._list_of_stocks = None
         else:
             self.factor = factor
             self.correlation = correlation
             self._left_subtree = RecommendationTree(None, None)  # self._left_subtree is an empty BST
             self._right_subtree = RecommendationTree(None, None)  # self._right_subtree is an empty RecommendationTree
+            self._list_of_stocks = []
 
     def is_empty(self) -> bool:
         """Return whether this RecommendationTree is empty.
@@ -56,7 +59,7 @@ class RecommendationTree:
         return self.factor is None and self.correlation is None
 
     def get_subtrees(self) -> list[RecommendationTree] | None:
-        """Return the subtrees of this game tree."""
+        """Return the subtrees of this recommendation tree."""
         # return list(self._left_subtree)
 
     # def find_subtree_by_move(self, move: str | tuple[str, ...]) -> Optional[RecommendationTree]:
@@ -76,15 +79,15 @@ class RecommendationTree:
 
     def __str__(self) -> str:
         """Return a string representation of this tree.
-        >>> c = create_game_tree([('f3', 3), ('f2', 2), ('f1', 1)], 2)
-        >>> print(c)
-        f1: 1
-          f2: 2
-            f3: 3
-            f3: 3
-          f2: 2
-            f3: 3
-            f3: 3
+        # >>> c = create_game_tree([('f3', 1), ('f2', 2), ('f1', 3], 2)
+        # >>> print(c)
+        # f1: 1
+        #   f2: 2
+        #     f3: 3
+        #     f3: 3
+        #   f2: 2
+        #     f3: 3
+        #     f3: 3
         """
         return self._str_indented(0)
 
@@ -105,21 +108,18 @@ class RecommendationTree:
         self._right_subtree = subtree
 
 
-def create_game_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
-    """ This function would create the full game tree
+def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
+    """ This function would create the full recommendation tree
     Preconditions:
     - #factors correlation is sorted
     - #d is not 0
     """
-    # root_factor, root_correlation = factors_correlation.pop(0)
     root_factor, root_correlation = factors_correlation[d]
     recommendation_tree = RecommendationTree(root_factor, root_correlation)
     if d == 0:
         return recommendation_tree
     else:
-        # factor, correlation = factors_correlation.pop(0)
-        # factor, correlation = factors_correlation[d]
-        subtree = create_game_tree(factors_correlation, d - 1)
+        subtree = create_recommendation_tree(factors_correlation, d - 1)
         recommendation_tree.add_subtree(subtree)
         return recommendation_tree
 

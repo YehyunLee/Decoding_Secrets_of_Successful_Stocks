@@ -16,26 +16,25 @@ please consult our Course Syllabus.
 
 This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
-import part1_data
+import part1_factor_data_processing
+import part2_recommendation_tree
 
-# Choosing the Main Influential Factors
-# stocks = part1_data.read_csv()
+# [1] Choosing the Main Influential Factors
+
+# stocks = part1_factor_data_processing.read_csv()
 stocks = ['MSFT', 'META', 'AAPL', 'GOOGL', 'SPY', 'SQQQ']
 train_end_date = '2015-03-25'
-stocks_performance = part1_data.get_percentage_growth_of_stocks(stocks, train_end_date)
-top_ranked_stocks = part1_data.top_half(stocks_performance)
+stocks_performance = part1_factor_data_processing.get_percentage_growth_of_stocks(stocks, train_end_date)
+top_ranked_stocks = part1_factor_data_processing.top_half(stocks_performance)
+best_factors = part1_factor_data_processing.determining_best_factor(top_ranked_stocks)
 
-# c = create_game_tree([('f3', 3), ('f2', 2), ('f1', 1)], 2)
+# [2] Recommendation Tree
+recommendation_tree = part2_recommendation_tree.create_recommendation_tree(best_factors, len(best_factors) - 1)
 
-lst_of_dict = []
-for top_stock in top_ranked_stocks:
-    lst_of_dict.append(part1_data.all_factors_correlation(top_stock[0]))
+recommendation_tree.move_stock_to_subtree(('AAPL', {'pe-ratio': 0.4946519727984256, 'price-sales': 0.5835806630207975, 'price-book': 0.8104380119619405, 'roe': 0.8865666662667688, 'roa': 0.6767582349809744, 'return-on-tangible-equity': 0.8881634958214939, 'number-of-employees': 0.8474183005298309, 'current-ratio': -0.5958163812440904, 'quick-ratio': -0.6042497763708677, 'total-liabilities': 0.8647707467715722, 'debt-equity-ratio': 0.7765330213979921, 'roi': 0.4690201532614479, 'cash-on-hand': 0.8445638032474715, 'total-share-holder-equity': -0.08622598882515446, 'revenue': 0.8207153573825346, 'gross-profit': 0.7986135596428249, 'net-income': 0.784428847047673, 'shares-outstanding': -0.9291815200707428, 'average-price': 0.9796720015914931})
+)
 
-average_factor_correlation = {}
-for factor in lst_of_dict[0].keys():
-    combined_tuple = tuple(each_top_stock[factor] for each_top_stock in lst_of_dict)
-    average_factor_correlation[factor] = sum(combined_tuple) / len(combined_tuple)
 
-# Recommendation Tree
+
 # Investment Simulation
 # Visualization

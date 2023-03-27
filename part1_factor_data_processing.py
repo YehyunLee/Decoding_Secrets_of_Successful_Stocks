@@ -176,3 +176,20 @@ def all_factors_correlation(stock: str) -> dict[str, float]:
 
 # standard deviation -> dataframe.std()
 # df['Col'].std()
+
+
+# c = create_game_tree([('f3', 3), ('f2', 2), ('f1', 1)], 2)
+
+def determining_best_factor(top_ranked_stocks: list[tuple[str, float]]) -> list[tuple[str, float]]:
+    lst_of_dict = []
+    for top_stock in top_ranked_stocks:
+        lst_of_dict.append(all_factors_correlation(top_stock[0]))
+
+    average_factor_correlation = {}
+    for factor in lst_of_dict[0].keys():
+        combined_tuple = tuple(each_top_stock[factor] for each_top_stock in lst_of_dict)
+        average_factor_correlation[factor] = sum(combined_tuple) / len(combined_tuple)
+
+    convert_to_tuple = [(factor, correlation) for factor, correlation in average_factor_correlation.items()]
+    sorted_tuple = sorted(convert_to_tuple, key=lambda x: x[1])
+    return sorted_tuple
