@@ -6,8 +6,6 @@ import requests
 # stocks = input("Type list of stocks to possibibly invest, e.g. ['AAPL', 'META', 'MSFT']: ")
 # train_end_date = str(input(
 #     "Initial training date is 2009. Type end date you want to train the model. e.g. 2015-03-25: "))
-stocks = ['AAPL', 'MSFT']
-train_end_date = '2015-03-25'
 
 
 def get_percentage_growth(stock: str, end_date: str) -> float:
@@ -55,7 +53,10 @@ def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> lis
     """
     list_so_far = []
     for stock in stock_list:
-        list_so_far.append((stock, get_percentage_growth(stock, end_date)))
+        try:
+            list_so_far.append((stock, get_percentage_growth(stock, end_date)))
+        except(KeyError, IndexError, ValueError, TypeError, ImportError, AssertionError, ConnectionResetError, OSError):
+            continue
     sorted_list = sorted(list_so_far, key=lambda x: x[1], reverse=True)
     return sorted_list
 
@@ -122,7 +123,7 @@ def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
     return dict_df
 
 
-def correlation(dict_df: dict[str, pd.DataFrame | pd.Series], factor: str) -> pd.DataFrame:
+def correlation(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series]) -> float:
     df1 = dict_df['price']
     df2 = dict_df[factor]
     min_rows = min(df1.shape[0], df2.shape[0])
@@ -130,7 +131,6 @@ def correlation(dict_df: dict[str, pd.DataFrame | pd.Series], factor: str) -> pd
     df2 = df2.iloc[:min_rows]
     merged_df = pd.concat([df1, df2.iloc[:, -1]], axis=1)
     merged_df.dropna(inplace=True)
-    ###########################
 
     merged_df = merged_df.iloc[:, -2:]
     merged_df[merged_df.columns[0]] = merged_df[merged_df.columns[0]].astype(float)
@@ -143,21 +143,20 @@ def correlation(dict_df: dict[str, pd.DataFrame | pd.Series], factor: str) -> pd
 
     price_vs_factor_correlation = merged_df.corr(numeric_only=True)  # By default, pearson method.
     # method = 'pearson', 'spearman'
-    # cash-on-hand
 
     return price_vs_factor_correlation[price_vs_factor_correlation.columns[1]][price_vs_factor_correlation.columns[0]]
 
 
-def all_factors_correlation(stock: str):
+def all_factors_correlation(stock: str) -> dict[str, float]:
     dict_df = get_factors_data(stock)
-    links = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
-             'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
-             'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
-             'net-income', 'shares-outstanding', 'average-price']
-    list_of_correlations = []
-    for i in links:
-        list_of_correlations.append((i, correlation(dict_df, i)))
-    return list_of_correlations
+    factors = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
+               'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
+               'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
+               'net-income', 'shares-outstanding', 'average-price']
+    dict_of_correlations = {}
+    for factor in factors:
+        dict_of_correlations[factor] = correlation(factor, dict_df)
+    return dict_of_correlations
 # sort lambda
 
 
