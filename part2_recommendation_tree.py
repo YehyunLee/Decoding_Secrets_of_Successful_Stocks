@@ -9,13 +9,11 @@ class RecommendationTree:
     """Recommendation Tree class.
 
     Instance Attributes:
-        - move: the current move which represents the correlation (move is -math.inf at the start)
-        - investment: the amount of capital that the decision tree has
-
+        - factor: the factor for this current Recommendation Tree
+        - correlation: the current correlation for this current Recommendation Tree (which is -math.inf at the start)
 
     Representation Invariants:
-        - (self.move is None) == (self._left_subtree is None)
-        - (self.move is None) == (self._right_subtree is None)
+        -
     """
 
     # corr value float
@@ -34,7 +32,7 @@ class RecommendationTree:
     def __init__(self, factor: Optional[str], correlation: Optional[float] = TREE_START_CORR) -> None:
         """Initialize a new RecommendationTree containing only the given move value.
 
-        Initialize an empty RecommendationTree
+        Initialize an empty RecommendationTree if self.factor is None
         """
         if factor is None:
             self.factor = None
@@ -103,7 +101,7 @@ class RecommendationTree:
                     + self._left_subtree._str_indented(depth + 2))
 
     def add_subtree(self, subtree: RecommendationTree) -> None:  # update correlaton value
-        """Add a subtree to this game tree."""
+        """Add subtree to this RecommendationTree's left and right subtree."""
         self._left_subtree = subtree
         self._right_subtree = subtree
 
@@ -128,8 +126,9 @@ class RecommendationTree:
 def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
     """ This function would create the full recommendation tree
     Preconditions:
-    - #factors correlation is sorted
-    - #d is not 0
+        - factors_correlation is sorted (smallest to highest)
+        - factors_correlation != []
+        - d >= 0
     """
     root_factor, root_correlation = factors_correlation[d]
     recommendation_tree = RecommendationTree(root_factor, root_correlation)

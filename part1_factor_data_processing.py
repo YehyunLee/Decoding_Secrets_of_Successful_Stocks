@@ -10,7 +10,7 @@ import csv
 
 
 def read_csv() -> list[str]:
-    """Load data from csv file and return it to list
+    """Load data from csv file (filled with names of stocks) and return it in a list
     """
     csv_file = 's&p500.csv'
     stocks_list = []
@@ -32,8 +32,7 @@ def get_percentage_growth(stock: str, end_date: str) -> float:
 
     Preconditions:
         - end_date must be in the format of "YYYY-MM-DD"
-        - isinstance(user_input, str)
-        - user_input != ""
+        - stock != ""
     """
     yahoo_financials = YahooFinancials(stock)
     data = yahoo_financials.get_historical_price_data("2009-01-28", end_date, "daily")
@@ -58,12 +57,11 @@ def get_percentage_growth(stock: str, end_date: str) -> float:
 def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> list[tuple[str, float]]:
     """
     Returns a sorted list of tuples based on the percentage growth of each stock (biggest to smallest).
-    Each tuple is of the form (stock, growth percentage).
+    Each tuple is of the form (stock, percentage growth). Each stock corresponds to their get_percentage_growth value.
 
     Preconditions:
         - end_date must be in the format of "YYYY-MM-DD"
-        - isinstance(user_input, list)
-        - user_input != []
+        - stock_list != []
     """
     list_so_far = []
     for stock in stock_list:
@@ -77,7 +75,12 @@ def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> lis
 
 def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
     """
-    Returns good stocks (top half) list from retrieve_percentage_growth_of_stocks output
+    Returns good stocks (top half) list from get_percentage_growth_of_stocks output.
+    Since get_percentage_growth_of_stocks returns a sorted list based on biggest to smallest percentage growth,
+    top_half returns a list with stocks that have good percentage growths
+
+    Preconditions:
+        - sorted_list != []
     """
     half_list = sorted_list[:len(sorted_list)//2]
     return half_list
@@ -88,7 +91,6 @@ def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
 
     Preconditions:
         - stock != ''
-        - isinstance(stock, str)
     """
     data = pd.read_html(link, skiprows=1)
     df = pd.DataFrame(data[0])
@@ -112,7 +114,6 @@ def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
 
     Preconditions:
         - stock != ''
-        - isinstance(stock, str)
     """
     url = f'https://www.macrotrends.net/stocks/charts/{stock}/'
     response = requests.get(url)
@@ -138,6 +139,13 @@ def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
 
 
 def correlation(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series]) -> float:
+    """
+    Return the correlation of dictionary DataFrame dict_df
+
+    Preconditions:
+        - factor != ''
+        - dict_df != {}
+    """
     df1 = dict_df['price']
     df2 = dict_df[factor]
     min_rows = min(df1.shape[0], df2.shape[0])
