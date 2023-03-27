@@ -1,11 +1,25 @@
 from yahoofinancials import YahooFinancials
 import pandas as pd
 import requests
+import csv
 
 # 1. data
 # stocks = input("Type list of stocks to possibibly invest, e.g. ['AAPL', 'META', 'MSFT']: ")
 # train_end_date = str(input(
 #     "Initial training date is 2009. Type end date you want to train the model. e.g. 2015-03-25: "))
+
+
+def read_csv() -> list[str]:
+    """Load data from csv file and return it to list
+    """
+    csv_file = 's&p500.csv'
+    stocks_list = []
+    with open(csv_file) as file:
+        reader = csv.reader(file, delimiter=',')
+        next(reader)  # Skips first line
+        for row in reader:
+            stocks_list.extend(row)
+    return stocks_list
 
 
 def get_percentage_growth(stock: str, end_date: str) -> float:
