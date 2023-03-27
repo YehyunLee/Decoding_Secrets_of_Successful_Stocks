@@ -107,6 +107,23 @@ class RecommendationTree:
         self._left_subtree = subtree
         self._right_subtree = subtree
 
+    def move_stock_to_subtree(self, stock: tuple[str, dict[str, float]]):
+        ...
+        # 1 compare correlation
+        # 2 determine where to go, left or right
+        # 3 go into that subtree and recall this method
+        # 4 stop at leaf
+        if self._right_subtree is None and self._left_subtree is None:
+            self._list_of_stocks.append(stock[0])
+        else:
+            if stock[1][self.factor] <= self.correlation:
+                self._left_subtree.move_stock_to_subtree(stock)
+            else:
+                self._right_subtree.move_stock_to_subtree(stock)
+
+
+# self.get_ordered_leaf
+# self.get_subtree_by_move
 
 def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
     """ This function would create the full recommendation tree
