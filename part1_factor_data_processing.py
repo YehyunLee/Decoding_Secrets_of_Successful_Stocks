@@ -5,7 +5,7 @@ import csv
 
 # 1. data
 # stocks = input("Type list of stocks to possibibly invest, e.g. ['AAPL', 'META', 'MSFT']: ")
-# train_end_date = str(input(
+# training_end_date = str(input(
 #     "Initial training date is 2009. Type end date you want to train the model. e.g. 2015-03-25: "))  at least
 
 

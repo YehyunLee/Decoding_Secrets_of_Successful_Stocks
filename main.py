@@ -18,29 +18,69 @@ This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
 import part1_factor_data_processing
 import part2_recommendation_tree
-import part3_simulation
-
+import part3_investment_simulation
+import plotly.express as px
 
 if __name__ == '__main__':
-    # [1] Choosing the Main Influential Factors
-
+    # [0] User Input
     # stocks = part1_factor_data_processing.read_csv()
     stocks = ['MSFT', 'META', 'AAPL', 'GOOGL', 'SPY', 'SQQQ']
-    train_end_date = '2015-03-25'
-    range_of_leaf_notes = 3
-    stocks_performance = part1_factor_data_processing.get_percentage_growth_of_stocks(stocks, train_end_date)
+    training_end_date = '2015-03-25'
+    risk_percentage = 50
+
+    # [1] Choosing the Main Influential Factors
+    stocks_performance = part1_factor_data_processing.get_percentage_growth_of_stocks(stocks, training_end_date)
     top_ranked_stocks = part1_factor_data_processing.top_half(stocks_performance)
-    best_factors = part1_factor_data_processing.determining_best_factor(top_ranked_stocks, train_end_date)
+    best_factors = part1_factor_data_processing.determining_best_factor(top_ranked_stocks, training_end_date)
 
     # [2] Recommendation Tree
     recommendation_tree = part2_recommendation_tree.create_recommendation_tree(best_factors, len(best_factors) - 1)
+    recommendation_tree.insert_stocks(stocks, training_end_date)
+    buy_stocks = part2_recommendation_tree.determining_buy_stocks(recommendation_tree, risk_percentage)
 
-    # recommendation_tree.move_stock_to_subtree(('AAPL', {'pe-ratio': 0.4946519727984256, 'price-sales': 0.5835806630207975, 'price-book': 0.8104380119619405, 'roe': 0.8865666662667688, 'roa': 0.6767582349809744, 'return-on-tangible-equity': 0.8881634958214939, 'number-of-employees': 0.8474183005298309, 'current-ratio': -0.5958163812440904, 'quick-ratio': -0.6042497763708677, 'total-liabilities': 0.8647707467715722, 'debt-equity-ratio': 0.7765330213979921, 'roi': 0.4690201532614479, 'cash-on-hand': 0.8445638032474715, 'total-share-holder-equity': -0.08622598882515446, 'revenue': 0.8207153573825346, 'gross-profit': 0.7986135596428249, 'net-income': 0.784428847047673, 'shares-outstanding': -0.9291815200707428, 'average-price': 0.9796720015914931})
-    # )
-    # recommendation_tree.move_stock_to_subtree(('MSFT', {'pe-ratio': 0.06743672228336332, 'price-sales': 0.5774179644228993, 'price-book': 0.5392188114715107, 'roe': 0.5410015226759612, 'roa': 0.6541732947379073, 'return-on-tangible-equity': 0.46087817546613413, 'number-of-employees': 0.8703504265038106, 'current-ratio': -0.7244154322097623, 'quick-ratio': -0.7238632386558479, 'total-liabilities': 0.9459314357075035, 'debt-equity-ratio': -0.27934137635434914, 'roi': 0.7454220518315186, 'cash-on-hand': 0.8606665898210469, 'total-share-holder-equity': 0.8131055889944516, 'revenue': 0.9009812290664895, 'gross-profit': 0.8566504410745562, 'net-income': 0.7498604194237031, 'shares-outstanding': -0.8877393522499698, 'average-price': 0.9901176754144428})
-    #                                           )
-    # recommendation_tree.move_stock_to_subtree(('AAPL', {'pe-ratio': 0.4946519727984256, 'price-sales': 0.5835806630207975, 'average-price': 0.9796720015914931})
-    # )
+    # [3] Investment Simulation
+    # - '^IXIC' stands for NASDAQ
+    # - '^GSPC' stands for S&P500
 
+    # Benchmark
+    benchmark_NASDAQ_simulation = part3_investment_simulation.benchmark_simulation('^IXIC', training_end_date)
+    benchmark_S_and_P500_simulation = part3_investment_simulation.benchmark_simulation('^GSPC', training_end_date)
+    benchmark_all_stocks_simulation = part3_investment_simulation.benchmark_simulation(stocks, training_end_date)
+
+    # Using Statistically Significant Factors
+    recommendation_tree_simulation = part3_investment_simulation.recommendation_tree_simulation(
+        buy_stocks, training_end_date)
+
+    # years = list(recommendation_tree_simulation.keys())
+    # values = list(recommendation_tree_simulation.values())
+    #
+    # fig = px.line(x=years, y=values, labels={'x': 'Year', 'y': 'Return on Investment'}, title='Simulation Results')
+    # fig.show()
+
+    import plotly.graph_objs as go
+
+    # assuming your simulation results are stored in dictionaries called 'benchmark_NASDAQ_simulation' and 'benchmark_S_and_P500_simulation'
+    nasdaq_years = list(benchmark_NASDAQ_simulation.keys())
+    nasdaq_values = list(benchmark_NASDAQ_simulation.values())
+
+    sp500_years = list(benchmark_S_and_P500_simulation.keys())
+    sp500_values = list(benchmark_S_and_P500_simulation.values())
+
+    benchmark_all_stocks_simulation_years = list(benchmark_all_stocks_simulation.keys())
+    benchmark_all_stocks_simulation_values = list(benchmark_all_stocks_simulation.values())
+
+    recommendation_tree_simulation_years = list(recommendation_tree_simulation.keys())
+    recommendation_tree_simulation_values = list(recommendation_tree_simulation.values())
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=nasdaq_years, y=nasdaq_values, name='NASDAQ'))
+    fig.add_trace(go.Scatter(x=sp500_years, y=sp500_values, name='S&P 500'))
+    fig.add_trace(go.Scatter(x=benchmark_all_stocks_simulation_years, y=benchmark_all_stocks_simulation_values,
+                             name='All Stocks'))
+    fig.add_trace(go.Scatter(x=recommendation_tree_simulation_years, y=recommendation_tree_simulation_values,
+                             name='Recommendation Tree'))
+
+    fig.update_layout(title='Simulation Results', xaxis_title='Year', yaxis_title='Return on Investment')
+    fig.show()
     # Investment Simulation
     # Visualization

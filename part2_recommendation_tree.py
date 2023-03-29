@@ -129,6 +129,35 @@ class RecommendationTree:
         leafs_with_stock = [leaf._list_of_stocks for leaf in leafs]
         return {i+1: leaf for i, leaf in enumerate(leafs_with_stock)}
 
+    def insert_stocks(self, stocks: list[str], end_date: str) -> None:
+        """
+        Insert multiple stocks into
+        Preconditions:
+        - stocks != []
+        - end_date
+        - self.is_empty() is not None
+        - end-date != ''
+        """
+        for stock in stocks:  # Classify each stock into game_tree
+            try:
+                self.move_stock_to_subtree(
+                    (stock, part1_factor_data_processing.all_factors_correlation(stock, end_date)))
+            except:
+                continue
+
+    # def __copy__(self) -> RecommendationTree:
+    #     """Creates a copy of the recommendation tree. This method is used to ensure that
+    #     the new recommendation tree and the old one does not have same id.
+    #     (i.e: if original mutates, the old one stays the same).
+    #     """
+    #     pass
+
+    # def remove_list_of_stocks(self):
+    #     """ Removes the list of stocks from each leaf
+    #     """
+    #     list_of_leafs = self.get_leaf_recommendation_tree()
+    #     for each_leaf in list_of_leafs:
+    #         each_leaf._list_of_stocks = []
 
 #Will be used as DOCTEST, DO NOT REMOVE
 
