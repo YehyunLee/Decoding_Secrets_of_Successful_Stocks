@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="March 27th Work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part1_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_factor_data_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_recommendation_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
-    <list id="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" name="Changes by azmha" comment="v1" />
+    <list id="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" name="Changes by azmha" comment="v1">
+      <change beforePath="$PROJECT_DIR$/part1_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_factor_data_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_recommendation_tree.py" afterDir="false" />
+    </list>
     <list id="e103caad-4a0a-4c8d-a282-2f1523cfb3fb" name="Changes by Wonjae" comment="V1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +35,47 @@
       </map>
     </option>
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/part1_factor_data_processing.py">
+      <ranges>
+        <range start1="8" end1="9" start2="8" end2="9" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="95" end1="97" start2="95" end2="97" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="125" end1="125" start2="125" end2="126" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="140" end1="141" start2="141" end2="183" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="142" end1="144" start2="184" end2="185" changelist="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" />
+        <range start1="148" end1="165" start2="189" end2="189" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="167" end1="168" start2="191" end2="191" changelist="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" />
+        <range start1="171" end1="172" start2="194" end2="195" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="177" end1="177" start2="200" end2="201" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="179" end1="180" start2="203" end2="205" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="190" end1="191" start2="215" end2="216" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="193" end1="194" start2="218" end2="225" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="200" end1="201" start2="231" end2="232" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/part2_recommendation_tree.py">
+      <ranges>
+        <range start1="48" end1="61" start2="48" end2="48" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="80" end1="81" start2="67" end2="68" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="96" end1="101" start2="83" end2="89" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="102" end1="106" start2="90" end2="96" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="108" end1="109" start2="98" end2="99" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="113" end1="114" start2="103" end2="105" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="121" end1="121" start2="112" end2="137" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="122" end1="124" start2="138" end2="141" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="126" end1="126" start2="143" end2="144" changelist="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" />
+        <range start1="137" end1="139" start2="155" end2="159" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="141" end1="142" start2="161" end2="161" changelist="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" />
+        <range start1="144" end1="145" start2="163" end2="163" changelist="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" />
+        <range start1="146" end1="146" start2="164" end2="188" changelist="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2MQwWVqtPpe5FdIoJodSd6MaV3F" />
   <component name="ProjectViewState">
@@ -41,7 +87,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/glad7/PycharmProjects/CS&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="PyConsoleOptionsProvider">
@@ -62,9 +108,6 @@
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -83,9 +126,6 @@
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -266,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679958360753</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="March 28th Work">
+      <created>1680027357254</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680027357254</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -283,9 +330,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Basic File" />
     <MESSAGE value="March 26th" />
-    <MESSAGE value="March 27th Work" />
     <MESSAGE value="v1" />
     <MESSAGE value="V1" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1" />
+    <MESSAGE value="March 27th Work" />
+    <option name="LAST_COMMIT_MESSAGE" value="March 27th Work" />
   </component>
 </project>

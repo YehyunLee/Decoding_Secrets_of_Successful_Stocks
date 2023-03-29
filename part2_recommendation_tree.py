@@ -47,19 +47,6 @@ class RecommendationTree:
             self._right_subtree = RecommendationTree(None, None)  # self._right_subtree is an empty RecommendationTree
             self._list_of_stocks = []
 
-    def is_empty(self) -> bool:
-        """Return whether this RecommendationTree is empty.
-        """
-        # if self.factor is None and self.correlation is None:
-        #     return True
-        # else:
-        #     return False
-        return self.factor is None and self.correlation is None
-
-    def get_subtrees(self) -> list[RecommendationTree] | None:
-        """Return the subtrees of this recommendation tree."""
-        # return list(self._left_subtree)
-
     # def find_subtree_by_move(self, move: str | tuple[str, ...]) -> Optional[RecommendationTree]:
     #     """Return the subtree corresponding to the given move.
     #
@@ -78,7 +65,7 @@ class RecommendationTree:
     def __str__(self) -> str:
         """Return a string representation of this tree.
         # >>> c = create_game_tree([('f3', 1), ('f2', 2), ('f1', 3], 2)
-        # >>> print(c)
+        # >>> print(c) str(c)
         # f1: 1
         #   f2: 2
         #     f3: 3
@@ -94,24 +81,28 @@ class RecommendationTree:
 
         The indentation level is specified by the <depth> parameter.
         """
-        if self.factor is None:
-            return ''
-        else:
-            return (' ' * depth + f'{self.factor}: {self.correlation}\n' + self._left_subtree._str_indented(depth + 2)
-                    + self._left_subtree._str_indented(depth + 2))
+        string = ' ' * depth + f'{self.factor}: {", ".join(self._list_of_stocks)}\n'
+        if self._left_subtree.factor is not None:
+            string += self._left_subtree._str_indented(depth + 2)
+        if self._right_subtree.factor is not None:
+            string += self._right_subtree._str_indented(depth + 2)
+        return string
 
-    def add_subtree(self, subtree: RecommendationTree) -> None:  # update correlaton value
-        """Add subtree to this RecommendationTree's left and right subtree."""
-        self._left_subtree = subtree
-        self._right_subtree = subtree
+    def add_subtree(self, left_or_right: str, subtree: RecommendationTree) -> None:  # update correlaton value
+        """Add subtree to this RecommendationTree's left or right subtree."""
+        if left_or_right == 'left':
+            self._left_subtree = subtree
+        else:
+            self._right_subtree = subtree
 
     def move_stock_to_subtree(self, stock: tuple[str, dict[str, float]]):
-        ...
+        # stock[0] is the stock name
         # 1 compare correlation
         # 2 determine where to go, left or right
         # 3 go into that subtree and recall this method
         # 4 stop at leaf
-        if self._right_subtree is None and self._left_subtree is None:
+        # 5 append stock name to list_of_stocks
+        if self._left_subtree.factor is None and self._right_subtree.factor is None:
             self._list_of_stocks.append(stock[0])
         else:
             if stock[1][self.factor] <= self.correlation:
@@ -119,9 +110,35 @@ class RecommendationTree:
             else:
                 self._right_subtree.move_stock_to_subtree(stock)
 
+    def get_leaf_recommendation_tree(self) -> list[RecommendationTree]:
+        """  This function would be used to run through the recommendation tree
+        that has already stocks that are classified and will return the recommendation tree
+        that is a leaf in order from left to right
+        """
+        if self._left_subtree.factor is None and self._right_subtree.factor is None:
+            return [self]
+        else:
+            leaf_nodes = []
+            if self._left_subtree is not None:
+                leaf_nodes.extend(self._left_subtree.get_leaf_recommendation_tree())
+            if self._right_subtree is not None:
+                leaf_nodes.extend(self._right_subtree.get_leaf_recommendation_tree())
+            return leaf_nodes
 
-# self.get_ordered_leaf
-# self.get_subtree_by_move
+    def ranked_choices_of_stocks(self) -> dict[int:list[str]]:
+        """ This ranks the stocks from the leaf nodes from right to left
+        as a dictionary starting with the key of 1.
+        """
+        leafs = self.get_leaf_recommendation_tree()
+        leafs_with_stock = [leaf._list_of_stocks for leaf in leafs]
+        return {i+1: leaf for i, leaf in enumerate(leafs_with_stock)}
+
+
+#Will be used as DOCTEST, DO NOT REMOVE
+
+# [a._list_of_stocks for a in recommendation_tree.get_leaf_recommendation_tree() if a._list_of_stocks != []]
+
+# MORE RIGHT, BETTER.
 
 def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
     """ This function would create the full recommendation tree
@@ -135,8 +152,10 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
     if d == 0:
         return recommendation_tree
     else:
-        subtree = create_recommendation_tree(factors_correlation, d - 1)
-        recommendation_tree.add_subtree(subtree)
+        left_subtree = create_recommendation_tree(factors_correlation, d - 1)
+        right_subtree = create_recommendation_tree(factors_correlation, d - 1)
+        recommendation_tree.add_subtree('left', left_subtree)
+        recommendation_tree.add_subtree('right', right_subtree)
         return recommendation_tree
 
 # def create_simulation() ->

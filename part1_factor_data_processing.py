@@ -6,7 +6,7 @@ import csv
 # 1. data
 # stocks = input("Type list of stocks to possibibly invest, e.g. ['AAPL', 'META', 'MSFT']: ")
 # train_end_date = str(input(
-#     "Initial training date is 2009. Type end date you want to train the model. e.g. 2015-03-25: "))
+#     "Initial training date is 2009. Type end date you want to train the model. e.g. 2015-03-25: "))  at least
 
 
 def read_csv() -> list[str]:
@@ -93,8 +93,8 @@ def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
         - stock != ''
     """
     data = pd.read_html(link, skiprows=1)
-    df = pd.DataFrame(data[0])
-    df = pd.concat([df.columns.to_frame().T, df], ignore_index=True)
+    df = pd.DataFrame(data[0])  # Skip header
+    df = pd.concat([df.columns.to_frame().T, df], ignore_index=True)  # Make it to frame
     df.columns = range(len(df.columns))
     df = df[1:]
     # Average price and stock price is on the same page, thus, I need to split the cases.
@@ -123,6 +123,7 @@ def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
              'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
              'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
              'net-income', 'shares-outstanding', 'stock-price-history']
+    # links = ['pe-ratio', 'price-sales', 'stock-price-history']
     # stock-price-history here gets average price as well as stock price
 
     dict_df = {}
@@ -138,23 +139,36 @@ def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
     return dict_df
 
 
-def correlation(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series]) -> float:
+def cleaning_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series], end_date: str) -> pd.DataFrame | pd.Series:
     """
-    Return the correlation of dictionary DataFrame dict_df
+    Function merges price data and factor data into one DataFrame.
 
-    Preconditions:
-        - factor != ''
-        - dict_df != {}
+    First, this function gets the data of the stock price and the factor values.
+    It cleans up missing and incorrect values in the year column and converts each year into integer.
+    Then the data that is before and including the end date is chosen.
+    The year column is then removed and the remaining data is turned into float.
+    Lastly, function merges price and factor data into one DataFrame.
     """
+    end_year = int(end_date.split('-')[0])
+
     df1 = dict_df['price']
     df2 = dict_df[factor]
     min_rows = min(df1.shape[0], df2.shape[0])
     df1 = df1.iloc[:min_rows]
     df2 = df2.iloc[:min_rows]
     merged_df = pd.concat([df1, df2.iloc[:, -1]], axis=1)
-    merged_df.dropna(inplace=True)
+    merged_df.dropna(inplace=True)  # Drop NaN
 
-    merged_df = merged_df.iloc[:, -2:]
+    # Change the date column into integers
+    try:
+        merged_df[merged_df.columns[0]] = merged_df[merged_df.columns[0]].astype(int)
+    except ValueError:
+        merged_df[merged_df.columns[0]] = merged_df[merged_df.columns[0]].str.replace('-', '', regex=True).astype(int)
+
+    # Select dates up to end date.
+    merged_df = merged_df.loc[merged_df[0] <= end_year].reset_index(drop=True)
+
+    merged_df = merged_df.iloc[:, -2:]  # Deletes dates
     merged_df[merged_df.columns[0]] = merged_df[merged_df.columns[0]].astype(float)
     try:
         merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].astype(float)
@@ -163,21 +177,34 @@ def correlation(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series]) -> fl
         merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].str.replace('%', '', regex=True)
         merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].str.replace(',', '', regex=True).astype(float)
 
+    return merged_df
+
+
+def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
+    """
+    Return the correlation of dictionary DataFrame dict_df
+
+    Preconditions:
+        - factor != ''
+        - dict_df != {}
+    """
     price_vs_factor_correlation = merged_df.corr(numeric_only=True)  # By default, pearson method.
     # method = 'pearson', 'spearman'
 
     return price_vs_factor_correlation[price_vs_factor_correlation.columns[1]][price_vs_factor_correlation.columns[0]]
 
 
-def all_factors_correlation(stock: str) -> dict[str, float]:
+def all_factors_correlation(stock: str, end_date: str) -> dict[str, float]:
     dict_df = get_factors_data(stock)
     factors = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
                'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
                'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
                'net-income', 'shares-outstanding', 'average-price']
+    # factors = ['pe-ratio', 'price-sales', 'average-price']
     dict_of_correlations = {}
     for factor in factors:
-        dict_of_correlations[factor] = correlation(factor, dict_df)
+        cleaned_data = cleaning_data(factor, dict_df, end_date)
+        dict_of_correlations[factor] = correlation(cleaned_data)
     return dict_of_correlations
 # sort lambda
 
@@ -188,16 +215,22 @@ def all_factors_correlation(stock: str) -> dict[str, float]:
 
 # c = create_game_tree([('f3', 3), ('f2', 2), ('f1', 1)], 2)
 
-def determining_best_factor(top_ranked_stocks: list[tuple[str, float]]) -> list[tuple[str, float]]:
+def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date: str) -> list[tuple[str, float]]:
     lst_of_dict = []
     for top_stock in top_ranked_stocks:
-        lst_of_dict.append(all_factors_correlation(top_stock[0]))
+        try:
+            lst_of_dict.append(all_factors_correlation(top_stock[0], end_date))
+        except: #pd.XMLSyntaxError
+            continue
+    #   raise XMLSyntaxError("no text parsed from document", 0, 0, 0)
+    #   File "<string>", line 0
+    # lxml.etree.XMLSyntaxError: no text parsed from document
 
     average_factor_correlation = {}
     for factor in lst_of_dict[0].keys():
         combined_tuple = tuple(each_top_stock[factor] for each_top_stock in lst_of_dict)
         average_factor_correlation[factor] = sum(combined_tuple) / len(combined_tuple)
 
-    convert_to_tuple = [(factor, correlation) for factor, correlation in average_factor_correlation.items()]
+    convert_to_tuple = [(factor, correlation_value) for factor, correlation_value in average_factor_correlation.items()]
     sorted_tuple = sorted(convert_to_tuple, key=lambda x: x[1])
     return sorted_tuple
