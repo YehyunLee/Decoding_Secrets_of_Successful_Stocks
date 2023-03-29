@@ -5,11 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="March 28th Work">
+      <change afterPath="$PROJECT_DIR$/part3_simulation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part1_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_factor_data_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_recommendation_tree.py" afterDir="false" />
     </list>
-    <list id="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" name="Changes by azmha" comment="v1" />
-    <list id="e103caad-4a0a-4c8d-a282-2f1523cfb3fb" name="Changes by Wonjae" comment="V1" />
+    <list id="9268b666-c1dc-4ebf-97e6-a41d325fa5a9" name="Changes by azmha" comment="">
+      <change beforePath="$PROJECT_DIR$/part2_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_recommendation_tree.py" afterDir="false" />
+    </list>
+    <list id="a5710980-cba8-475a-85a0-5b068dd577fe" name="Changes by Wonjae" comment="">
+      <change beforePath="$PROJECT_DIR$/part1_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_factor_data_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_recommendation_tree.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +36,42 @@
         <entry key="$PROJECT_DIR$" value="backup_code_do_not_delete" />
       </map>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/part1_factor_data_processing.py">
+      <ranges>
+        <range start1="26" end1="27" start2="26" end2="27" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="37" end1="38" start2="37" end2="38" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="59" end1="60" start2="59" end2="60" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="78" end1="79" start2="78" end2="79" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="89" end1="90" start2="89" end2="93" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="92" end1="93" start2="95" end2="99" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="112" end1="113" start2="118" end2="120" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="151" end1="151" start2="158" end2="163" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="185" end1="186" start2="197" end2="199" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="196" end1="196" start2="209" end2="217" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="217" end1="217" start2="238" end2="245" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/part2_recommendation_tree.py">
+      <ranges>
+        <range start1="2" end1="6" start2="2" end2="2" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="12" end1="13" start2="8" end2="9" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="15" end1="16" start2="11" end2="12" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="27" end1="27" start2="23" end2="30" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="31" end1="32" start2="34" end2="35" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="45" end1="46" start2="48" end2="49" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="60" end1="63" start2="63" end2="63" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="98" end1="98" start2="98" end2="101" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="127" end1="128" start2="130" end2="131" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+        <range start1="135" end1="135" start2="138" end2="151" changelist="9268b666-c1dc-4ebf-97e6-a41d325fa5a9" />
+        <range start1="144" end1="145" start2="160" end2="166" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="152" end1="153" start2="173" end2="174" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="155" end1="156" start2="176" end2="177" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="157" end1="158" start2="178" end2="179" changelist="a5710980-cba8-475a-85a0-5b068dd577fe" />
+        <range start1="161" end1="188" start2="182" end2="182" changelist="29e3e45e-6416-4988-80b3-f651ee3964d1" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -66,9 +110,6 @@
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -87,9 +128,6 @@
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -125,19 +163,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="part3_simulation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\glad7\PycharmProjects\CSC111 Project\Test\test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part3_simulation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,10 +205,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.part3_simulation" />
         <item itemvalue="Python.part1_factor_data_processing" />
         <item itemvalue="Python.part2_recommendation_tree" />
         <item itemvalue="Python.part1_factor_data_processing" />
-        <item itemvalue="Python.test3" />
       </list>
     </recent_temporary>
   </component>
@@ -298,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680057357955</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="March 28th Work">
+      <created>1680057737935</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680057737935</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

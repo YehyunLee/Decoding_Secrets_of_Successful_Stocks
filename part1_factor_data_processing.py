@@ -35,7 +35,7 @@ def get_percentage_growth(stock: str, end_date: str) -> float:
         - stock != ""
     """
     yahoo_financials = YahooFinancials(stock)
-    data = yahoo_financials.get_historical_price_data("2009-01-28", end_date, "daily")
+    data = yahoo_financials.get_historical_price_data("2009-01-01", end_date, "daily")
     prices = data[stock]['prices']
     initial_price = prices[0]['adjclose']
     recent_price = prices[len(prices) - 1]['adjclose']

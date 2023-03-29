@@ -1,9 +1,5 @@
 from __future__ import annotations
 from typing import Optional
-import math
-
-TREE_START_CORR = -math.inf
-
 
 class RecommendationTree:
     """Recommendation Tree class.
@@ -29,7 +25,7 @@ class RecommendationTree:
     _right_subtree: Optional[RecommendationTree]
     _list_of_stocks: Optional[list]
 
-    def __init__(self, factor: Optional[str], correlation: Optional[float] = TREE_START_CORR) -> None:
+    def __init__(self, factor: Optional[str], correlation: Optional[float] = 0) -> None:
         """Initialize a new RecommendationTree containing only the given move value.
 
         Initialize an empty RecommendationTree if self.factor is None
@@ -125,7 +121,7 @@ class RecommendationTree:
                 leaf_nodes.extend(self._right_subtree.get_leaf_recommendation_tree())
             return leaf_nodes
 
-    def ranked_choices_of_stocks(self) -> dict[int:list[str]]:
+    def ranked_choices_of_stocks(self) -> dict[int, list[str]]:
         """ This ranks the stocks from the leaf nodes from right to left
         as a dictionary starting with the key of 1.
         """
@@ -158,31 +154,3 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
         recommendation_tree.add_subtree('left', left_subtree)
         recommendation_tree.add_subtree('right', right_subtree)
         return recommendation_tree
-
-
-
-
-
-# def printLeafNodes(root: RecommendationTree) -> None:
-#
-#     # If node is null, return
-#     if (not root):
-#         return
-#
-#     # If node is leaf node,
-#     # print its data
-#     if (not root._left_subtree and
-#             not root._right_subtree):
-#         print(root.data,
-#               end=" ")
-#         return
-#
-#     # If left child exists,
-#     # check for leaf recursively
-#     if root.left:
-#         printLeafNodes(root.left)
-#
-#     # If right child exists,
-#     # check for leaf recursively
-#     if root.right:
-#         printLeafNodes(root.right)
