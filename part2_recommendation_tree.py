@@ -127,6 +127,7 @@ class RecommendationTree:
     def ranked_choices_of_stocks(self) -> dict[int, list[str]]:
         """ This ranks the stocks from the leaf nodes from right to left
         as a dictionary starting with the key of 1.
+        Preconditions:
         """
         leafs = self.get_leaf_recommendation_tree()
         leafs_with_stock = [leaf._list_of_stocks for leaf in leafs]
