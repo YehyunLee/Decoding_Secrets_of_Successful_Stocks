@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="March 28th Work">
-      <change beforePath="$PROJECT_DIR$/Test/Development Note.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Development Note.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part1_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_factor_data_processing.py" afterDir="false" />
     </list>
     <list id="c5d915cc-7039-4e6a-a990-ed96f8ea3fb9" name="Changes by azmha" comment="v1" />
     <list id="e103caad-4a0a-4c8d-a282-2f1523cfb3fb" name="Changes by Wonjae" comment="V1" />
@@ -65,6 +66,9 @@
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -83,6 +87,9 @@
       <module name="CSC111 Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -284,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680056830181</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="March 28th Work">
+      <created>1680057357955</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680057357955</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -303,8 +317,8 @@
     <MESSAGE value="March 26th" />
     <MESSAGE value="V1" />
     <MESSAGE value="March 27th Work" />
-    <MESSAGE value="March 28th Work" />
     <MESSAGE value="v1" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1" />
+    <MESSAGE value="March 28th Work" />
+    <option name="LAST_COMMIT_MESSAGE" value="March 28th Work" />
   </component>
 </project>

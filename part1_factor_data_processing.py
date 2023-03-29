@@ -139,7 +139,8 @@ def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
     return dict_df
 
 
-def cleaning_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series], end_date: str) -> pd.DataFrame | pd.Series:
+def clean_and_merge_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series],
+                         end_date: str) -> pd.DataFrame | pd.Series:
     """
     Function merges price data and factor data into one DataFrame.
 
@@ -201,7 +202,7 @@ def all_factors_correlation(stock: str, end_date: str) -> dict[str, float]:
     # factors = ['pe-ratio', 'price-sales', 'average-price']
     dict_of_correlations = {}
     for factor in factors:
-        cleaned_data = cleaning_data(factor, dict_df, end_date)
+        cleaned_data = clean_and_merge_data(factor, dict_df, end_date)
         dict_of_correlations[factor] = correlation(cleaned_data)
     return dict_of_correlations
 # sort lambda
