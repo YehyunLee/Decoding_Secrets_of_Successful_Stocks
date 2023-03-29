@@ -141,6 +141,7 @@ class RecommendationTree:
 # MORE RIGHT, BETTER.
 
 def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
+    #maybe limit how many factors here??
     """ This function would create the full recommendation tree
     Preconditions:
         - factors_correlation is sorted (smallest to highest)
@@ -158,7 +159,30 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
         recommendation_tree.add_subtree('right', right_subtree)
         return recommendation_tree
 
-# def create_simulation() ->
 
 
-# def get_recommendation(companies: list[str])
+
+
+# def printLeafNodes(root: RecommendationTree) -> None:
+#
+#     # If node is null, return
+#     if (not root):
+#         return
+#
+#     # If node is leaf node,
+#     # print its data
+#     if (not root._left_subtree and
+#             not root._right_subtree):
+#         print(root.data,
+#               end=" ")
+#         return
+#
+#     # If left child exists,
+#     # check for leaf recursively
+#     if root.left:
+#         printLeafNodes(root.left)
+#
+#     # If right child exists,
+#     # check for leaf recursively
+#     if root.right:
+#         printLeafNodes(root.right)

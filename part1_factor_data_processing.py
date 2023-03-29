@@ -182,15 +182,13 @@ def cleaning_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series], end
 
 def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
     """
-    Return the correlation of dictionary DataFrame dict_df
-
+    Return the correlation of a single factor to stock price
     Preconditions:
         - factor != ''
         - dict_df != {}
     """
     price_vs_factor_correlation = merged_df.corr(numeric_only=True)  # By default, pearson method.
     # method = 'pearson', 'spearman'
-
     return price_vs_factor_correlation[price_vs_factor_correlation.columns[1]][price_vs_factor_correlation.columns[0]]
 
 
