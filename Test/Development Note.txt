@@ -27,3 +27,19 @@ What's Done:
 - Rewrote Question and Goal
 - Rewrote Appendix, Definitions and Formulas
 - Very long meeting with Hisham. Discussed computation and architecture plan
+
+<March 25~26>
+part 1
+- data
+- factors
+- correlation
+
+<March 27~28>
+part 2
+- class: recommendation tree
+- methods
+- debug
+- finish part 1
+
+March 28th Note: Really worked hard.. Lots of progress made. Debugging took very long.
+However, hardest work are done, thus I hope everyone will work hard tomorrow to get things done.
