@@ -1,6 +1,9 @@
 from __future__ import annotations
 from typing import Optional
+import part1_factor_data_processing
+from python_ta.contracts import check_contracts
 
+@check_contracts
 class RecommendationTree:
     """Recommendation Tree class.
 
@@ -183,3 +186,27 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
         recommendation_tree.add_subtree('left', left_subtree)
         recommendation_tree.add_subtree('right', right_subtree)
         return recommendation_tree
+
+
+def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percentage: int) -> list[str]:
+    """
+    Returns a list of stocks that chooses which stocks to buy.
+
+    <risk_percentage> defintion and usage:
+        - <risk_percentage> is converted into an int -> (len(ranked_choices) * risk_percentage) // 100
+        - Based on the number from <risk_percentage> that is converted to int, we choose which stocks to buy from the
+            far right of <recommendation_tree>.
+        - For example, if the converted <risk_percentage> is 1, then the far right is chosen.
+        - Another example: if the converted <risk_percentage> is 2, then the two of the furthest right is chosen.
+        - After the chosen stocks are determined, the rest of the stocks is not bought.
+
+    Preconditions:
+        - 1 <= risk_percentage <= 100
+    """
+    ranked_choices = recommendation_tree.ranked_choices_of_stocks()
+    range_of_buy_leafs = len(ranked_choices) - ((len(ranked_choices) * risk_percentage) // 100)
+    # Drop empty list and pick ranked list of stocks based on percentage risk
+    nested_buy_stocks = [ranked_choices[choices] for choices in ranked_choices if
+                         choices > range_of_buy_leafs and ranked_choices[choices] != []]
+    buy_stocks = [item for sublist in nested_buy_stocks for item in sublist]  # Converts nested list to flat list
+    return buy_stocks
