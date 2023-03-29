@@ -9,10 +9,10 @@ class RecommendationTree:
 
     Instance Attributes:
         - factor: the factor for this current Recommendation Tree
-        - correlation: the current correlation for this current Recommendation Tree (which is -math.inf at the start)
+        - correlation: the correlation for this current Recommendation Tree
 
     Representation Invariants:
-        -
+        - If self.factor is None, then all other Instance Attributes are None.
     """
 
     # corr value float
@@ -24,6 +24,13 @@ class RecommendationTree:
     # subtrees
     factor: Optional[str]
     correlation: Optional[float]
+
+    # Private Instance Attributes:
+    #   - _left_subtree:
+    #       The left subtree, or None if this tree is empty
+    #   - _right_subtree:
+    #       The right subtree, or None if this tree is empty
+
     _left_subtree: Optional[RecommendationTree]
     _right_subtree: Optional[RecommendationTree]
     _list_of_stocks: Optional[list]
@@ -42,7 +49,7 @@ class RecommendationTree:
         else:
             self.factor = factor
             self.correlation = correlation
-            self._left_subtree = RecommendationTree(None, None)  # self._left_subtree is an empty BST
+            self._left_subtree = RecommendationTree(None, None)  # self._left_subtree is an empty RecommendationTree
             self._right_subtree = RecommendationTree(None, None)  # self._right_subtree is an empty RecommendationTree
             self._list_of_stocks = []
 
@@ -57,9 +64,6 @@ class RecommendationTree:
     #         return self._right_subtree.move
     #     else:
     #         return None
-
-    def __len__(self) -> int:
-        """Return the number of items in this tree."""
 
     def __str__(self) -> str:
         """Return a string representation of this tree.
@@ -95,6 +99,9 @@ class RecommendationTree:
             self._right_subtree = subtree
 
     def move_stock_to_subtree(self, stock: tuple[str, dict[str, float]]):
+        """
+        Use stock corrrelation factor value to compare with
+        """
         # stock[0] is the stock name
         # 1 compare correlation
         # 2 determine where to go, left or right
@@ -171,7 +178,12 @@ class RecommendationTree:
 
 def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
     #maybe limit how many factors here??
-    """ This function would create the full recommendation tree
+    """
+    Create a complete recommendation tree of depth d.
+
+    For the returned Recommendation Tree:
+        - If d == 0, a size-one RecommendationTree is returned.
+
     Preconditions:
         - factors_correlation is sorted (smallest to highest)
         - factors_correlation != []
@@ -179,12 +191,12 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
     """
     root_factor, root_correlation = factors_correlation[d]
     recommendation_tree = RecommendationTree(root_factor, root_correlation)
-    if d == 0:
+    if d == 0:  # Base Case
         return recommendation_tree
     else:
-        left_subtree = create_recommendation_tree(factors_correlation, d - 1)
+        left_subtree = create_recommendation_tree(factors_correlation, d - 1)   # Recursion Step
         right_subtree = create_recommendation_tree(factors_correlation, d - 1)
-        recommendation_tree.add_subtree('left', left_subtree)
+        recommendation_tree.add_subtree('left', left_subtree)   # Add to subtree
         recommendation_tree.add_subtree('right', right_subtree)
         return recommendation_tree
 

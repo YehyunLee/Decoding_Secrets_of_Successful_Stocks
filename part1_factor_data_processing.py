@@ -24,7 +24,7 @@ def read_csv() -> list[str]:
 
 def get_percentage_growth(stock: str, end_date: str) -> float:
     """
-    Returns the percentage growth of the stock from start date (the year 2009) to end_date (the user inputs end_date)
+    Returns the percentage growth of the stock from start date (the year 2009) to <end_date> (the user inputs end_date)
 
     To calculate the percentage gain/loss in a stock, the end date price is subtracted from start date price.
     Then it is divided by the start date price. Lastly, multiply the result by 100 to get the percentage change.
@@ -57,7 +57,7 @@ def get_percentage_growth(stock: str, end_date: str) -> float:
 def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> list[tuple[str, float]]:
     """
     Returns a sorted list of tuples based on the percentage growth of each stock (biggest to smallest).
-    Each tuple is of the form (stock, percentage growth). Each stock corresponds to their get_percentage_growth value.
+    Each tuple is of the form (stock, percentage growth). Each stock corresponds to their <get_percentage_growth> value.
 
     Preconditions:
         - end_date must be in the format of "YYYY-MM-DD"
@@ -76,7 +76,7 @@ def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> lis
 def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
     """
     Returns good stocks (top half) list from get_percentage_growth_of_stocks output.
-    Since get_percentage_growth_of_stocks returns a sorted list based on biggest to smallest percentage growth,
+    Since <get_percentage_growth_of_stocks> returns a sorted list based on biggest to smallest percentage growth,
     top_half returns a list with stocks that have good percentage growths
 
     Preconditions:
@@ -87,10 +87,16 @@ def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
 
 
 def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
-    """Get historical data of stock.
+    """
+    Return DataFrame historical data of stock. The DataFrame is in the form of two columns.
+    The left column consists of years and the right column consists of the corresponding data from each year based
+    on the factor (input of <link>).
 
     Preconditions:
-        - stock != ''
+        - link in ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
+             'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
+             'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
+             'net-income', 'shares-outstanding', 'stock-price-history']
     """
     data = pd.read_html(link, skiprows=1)
     df = pd.DataFrame(data[0])  # Skip header
@@ -110,7 +116,8 @@ def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
 
 def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
     """
-    Return DataFrame of historical factor of stock.
+    Return DataFrame of historical factor of stock. The DataFrame has the same function as obtain_factor_data but
+    instead of only showing data for one factor, it will show data from all factors in the factor list <links>.
 
     Preconditions:
         - stock != ''
@@ -149,6 +156,11 @@ def clean_and_merge_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Serie
     Then the data that is before and including the end date is chosen.
     The year column is then removed and the remaining data is turned into float.
     Lastly, function merges price and factor data into one DataFrame.
+
+    Preconditions:
+        - factor != ""
+        - end_date must be in the format of "YYYY-MM-DD"
+        - dict_df != {}
     """
     end_year = int(end_date.split('-')[0])
 
@@ -183,7 +195,8 @@ def clean_and_merge_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Serie
 
 def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
     """
-    Return the correlation of a single factor to stock price
+    Returns the correlation of a single factor to stock price.
+
     Preconditions:
         - factor != ''
         - dict_df != {}
@@ -194,6 +207,14 @@ def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
 
 
 def all_factors_correlation(stock: str, end_date: str) -> dict[str, float]:
+    """
+    Returns a dictionary of correlations in which the key is the factor in <factors> and the value is the
+    correlation value based on the factor.
+
+    Preconditions:
+        - stock != ''
+        - end_date must be in the format of "YYYY-MM-DD"
+    """
     dict_df = get_factors_data(stock)
     factors = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
                'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
@@ -215,6 +236,13 @@ def all_factors_correlation(stock: str, end_date: str) -> dict[str, float]:
 # c = create_game_tree([('f3', 3), ('f2', 2), ('f1', 1)], 2)
 
 def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date: str) -> list[tuple[str, float]]:
+    """
+    Returns a sorted list of tuples based on the order which starts from worst factor to best factor.
+
+    Preconditions:
+        - top_ranked_stocks != []
+        - end_date must be in the format of "YYYY-MM-DD"
+    """
     lst_of_dict = []
     for top_stock in top_ranked_stocks:
         try:
