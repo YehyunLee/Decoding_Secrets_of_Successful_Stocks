@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="March 28th Work" />
+    <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="March 29th Work" />
     <list id="9268b666-c1dc-4ebf-97e6-a41d325fa5a9" name="Changes by azmha" comment="Changes by azmha" />
     <list id="a5710980-cba8-475a-85a0-5b068dd577fe" name="Changes by Wonjae" comment="Changes by Wonjae" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +25,6 @@
         <entry key="$PROJECT_DIR$" value="backup_code_do_not_delete" />
       </map>
     </option>
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -329,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680131509283</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="March 29th Work">
+      <created>1680132015912</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1680132015912</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -352,6 +358,7 @@
     <MESSAGE value="March 28th Work" />
     <MESSAGE value="Changes by azmha" />
     <MESSAGE value="Changes by Wonjae" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by Wonjae" />
+    <MESSAGE value="March 29th Work" />
+    <option name="LAST_COMMIT_MESSAGE" value="March 29th Work" />
   </component>
 </project>
