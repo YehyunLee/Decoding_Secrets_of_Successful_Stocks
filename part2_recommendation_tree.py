@@ -243,3 +243,15 @@ def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percent
                          choices > range_of_buy_leafs and ranked_choices[choices] != []]
     buy_stocks = [item for sublist in nested_buy_stocks for item in sublist]  # Converts nested list to flat list
     return buy_stocks
+
+
+# if __name__ == '__main__':
+#     import doctest
+#     doctest.testmod(verbose=True)
+#
+#     import python_ta
+#     python_ta.check_all(config={
+#         'extra-imports': [part1_factor_data_processing],  # the names (strs) of imported modules
+#         'allowed-io': [],  # the names (strs) of functions that call print/open/input
+#         'max-line-length': 120
+#     })
