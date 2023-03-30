@@ -28,7 +28,7 @@ import pandas as pd
 import requests
 import os
 
-os.chdir('../CSC111 Project')
+os.chdir('../CSC111-Project')
 
 
 # simply scrape

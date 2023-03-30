@@ -20,6 +20,9 @@ import part1_factor_data_processing
 import part2_recommendation_tree
 import part3_investment_simulation
 import plotly.express as px
+import streamlit as st
+import plotly.graph_objs as go
+
 
 if __name__ == '__main__':
     # [0] User Input
@@ -57,7 +60,6 @@ if __name__ == '__main__':
     # fig = px.line(x=years, y=values, labels={'x': 'Year', 'y': 'Return on Investment'}, title='Simulation Results')
     # fig.show()
 
-    import plotly.graph_objs as go
 
     # assuming your simulation results are stored in dictionaries called 'benchmark_NASDAQ_simulation' and 'benchmark_S_and_P500_simulation'
     nasdaq_years = list(benchmark_NASDAQ_simulation.keys())
@@ -82,5 +84,17 @@ if __name__ == '__main__':
 
     fig.update_layout(title='Simulation Results', xaxis_title='Year', yaxis_title='Return on Investment')
     fig.show()
+
+    # st.plotly_chart(fig)
+
+
+
     # Investment Simulation
     # Visualization
+#
+# import sys
+# from streamlit import cli as stcli
+#
+# if __name__ == '__main__':
+#     sys.argv = ["streamlit", "run", "APP_NAME.py"]
+#     sys.exit(stcli.main())

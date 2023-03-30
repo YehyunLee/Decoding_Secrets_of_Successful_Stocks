@@ -3,6 +3,7 @@ from typing import Optional
 import part1_factor_data_processing
 from python_ta.contracts import check_contracts
 
+
 @check_contracts
 class RecommendationTree:
     """Recommendation Tree class.
