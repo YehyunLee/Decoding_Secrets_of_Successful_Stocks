@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="March 30th Work">
-      <change afterPath="$PROJECT_DIR$/rename.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run file.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part1_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_factor_data_processing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part2_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_recommendation_tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rename streamlit.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <list id="a5710980-cba8-475a-85a0-5b068dd577fe" name="Changes by Wonjae" comment="Changes by Wonjae" />
     <list id="fca62870-bfb0-4777-a5cf-648a5da505c9" name="Changes by Wonjae Lee" comment="V1" />
@@ -440,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680197275545</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="March 30th Work">
+      <created>1680203821630</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1680203821630</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -463,8 +463,8 @@
     <MESSAGE value="Changes by azmha" />
     <MESSAGE value="Changes by Wonjae" />
     <MESSAGE value="March 29th Work" />
-    <MESSAGE value="March 30th Work" />
     <MESSAGE value="V1" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1" />
+    <MESSAGE value="March 30th Work" />
+    <option name="LAST_COMMIT_MESSAGE" value="March 30th Work" />
   </component>
 </project>
