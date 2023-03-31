@@ -87,21 +87,12 @@ class RecommendationTree:
 
     def __str__(self) -> str:
         """Return a string representation of this tree.
-        # >>> c = create_game_tree([('f3', 1), ('f2', 2), ('f1', 3], 2)
-        # >>> print(c) str(c)
-        # f1: 1
-        #   f2: 2
-        #     f3: 3
-        #     f3: 3
-        #   f2: 2
-        #     f3: 3
-        #     f3: 3
+
         """
         return self._str_indented(0)
 
     def _str_indented(self, depth: int) -> str:
         """Return an indented string representation of this tree.
-
         The indentation level is specified by the <depth> parameter.
         """
         string = ' ' * depth + f'{self.factor}: {", ".join(self._list_of_stocks)}\n'
@@ -112,7 +103,11 @@ class RecommendationTree:
         return string
 
     def add_subtree(self, left_or_right: str, subtree: RecommendationTree) -> None:  # update correlaton value
-        """Add subtree to this RecommendationTree's left or right subtree."""
+        """Add subtree to this RecommendationTree's left or right subtree.
+
+        Preconditions:
+            - left_or_right in ['left', 'right']
+        """
         if left_or_right == 'left':
             self._left_subtree = subtree
         else:
@@ -120,7 +115,12 @@ class RecommendationTree:
 
     def move_stock_to_subtree(self, stock: tuple[str, dict[str, float]]):
         """
-        Use stock corrrelation factor value to compare with
+        Compare the average correlation value of the node and the given stock's factor
+        correlation value. If the stock has the higher correlation value, it moves to left
+        subtree and moves right if it is lower
+
+        Preconditions:
+            - self.factor in stock[1]
         """
         # stock[0] is the stock name
         # 1 compare correlation

@@ -22,6 +22,12 @@ from yahoofinancials import YahooFinancials
 
 
 def get_price(stock: str, year: int) -> float:
+    """
+    Function gets the stock price at the current year
+    Preconditions:
+    - stock! = ''
+    - Must be an existing year
+    """
     yahoo_financials = YahooFinancials(stock)
     data = yahoo_financials.get_historical_price_data(str(year) + '-01-01', str(year) + '-01-05', "daily")
     prices = data[stock]['prices']
