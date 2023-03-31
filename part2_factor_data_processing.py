@@ -1,10 +1,5 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 1)
 
-Instructions (READ THIS FIRST!)
-===============================
-
-...
-
 Copyright and Usage Information
 ===============================
 
@@ -36,6 +31,7 @@ def read_csv() -> list[str]:
         for row in reader:
             stocks_list.extend(row)
     return stocks_list
+
 
 def filter_stocks(stock_list: list[str], end_date: str) -> list[str]:
     """
@@ -74,7 +70,7 @@ def get_percentage_growth(stock: str, end_date: str) -> float:
     prices = data[stock]['prices']
     initial_price = prices[0]['adjclose']
     recent_price = prices[len(prices) - 1]['adjclose']
-    calc_percentage = ((recent_price - initial_price) / initial_price) * 100
+    calc_percentage = ((recent_price - initial_price) / initial_price) * 100    # Formula for growth percentage
     return calc_percentage
 
 
@@ -91,6 +87,7 @@ def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> lis
     for stock in stock_list:
         try:
             list_so_far.append((stock, get_percentage_growth(stock, end_date)))
+        # Do not add stock if they cause one of these errors
         except(KeyError, IndexError, ValueError, TypeError, ImportError, AssertionError, ConnectionResetError, OSError):
             continue
     sorted_list = sorted(list_so_far, key=lambda x: x[1], reverse=True)
@@ -106,7 +103,7 @@ def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
     Preconditions:
         - sorted_list != []
     """
-    half_list = sorted_list[:len(sorted_list)//2]
+    half_list = sorted_list[:len(sorted_list) // 2]  # Takes top half
     return half_list
 
 
@@ -137,6 +134,7 @@ def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
         df = df.iloc[:, [0, -2]]  # Get stock price
     return df
 
+
 def get_factors_data(stock: str, factors: list[str]) -> dict[str, pd.DataFrame | pd.Series]:
     """
     Return DataFrame of historical factor of stock. The DataFrame has the same function as obtain_factor_data but
@@ -144,6 +142,7 @@ def get_factors_data(stock: str, factors: list[str]) -> dict[str, pd.DataFrame |
 
     Preconditions:
         - stock != ''
+        - factors != []
     """
     url = f'https://www.macrotrends.net/stocks/charts/{stock}/'
     response = requests.get(url)
@@ -214,15 +213,13 @@ def clean_and_merge_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Serie
 
 def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
     """
-    Returns the correlation of a single factor to stock price.
-
-    Preconditions:
-        - factor != ''
-        - dict_df != {}
+    Returns the correlation of a single factor to  the stock price.
     """
     price_vs_factor_correlation = merged_df.corr(numeric_only=True)  # By default, pearson method.
     # method = 'pearson', 'spearman'
-    return price_vs_factor_correlation[price_vs_factor_correlation.columns[1]][price_vs_factor_correlation.columns[0]]
+    return abs(price_vs_factor_correlation[price_vs_factor_correlation.columns[1]]
+               [price_vs_factor_correlation.columns[0]])
+
 
 def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> dict[str, float]:
     """
@@ -232,6 +229,7 @@ def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> di
     Preconditions:
         - stock != ''
         - end_date must be in the format of "YYYY-MM-DD"
+        - factors != []
     """
     dict_df = get_factors_data(stock, factors)
     copy_factors = factors + ['average-price']
@@ -241,7 +239,7 @@ def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> di
         cleaned_data = clean_and_merge_data(factor, dict_df, end_date)
         dict_of_correlations[factor] = correlation(cleaned_data)
     return dict_of_correlations
-# sort lambda
+
 
 def filter_nan(factors_correlation: dict[str, float]) -> bool:
     """
@@ -264,6 +262,7 @@ def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date
     Preconditions:
         - top_ranked_stocks != []
         - end_date must be in the format of "YYYY-MM-DD"
+        - factors != []
     """
     lst_of_dict = []
     for top_stock in top_ranked_stocks:
@@ -286,3 +285,14 @@ def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date
     convert_to_tuple = [(factor, correlation_value) for factor, correlation_value in average_factor_correlation.items()]
     sorted_tuple = sorted(convert_to_tuple, key=lambda x: x[1])
     return sorted_tuple
+
+# if __name__ == '__main__':
+#     import doctest
+#     doctest.testmod(verbose=True)
+#
+#     import python_ta
+#     python_ta.check_all(config={
+#         'extra-imports': [part2_factor_data_processing],  # the names (strs) of imported modules
+#         'allowed-io': [],  # the names (strs) of functions that call print/open/input
+#         'max-line-length': 120
+#     })

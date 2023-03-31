@@ -1,10 +1,5 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 2)
 
-Instructions (READ THIS FIRST!)
-===============================
-
-...
-
 Copyright and Usage Information
 ===============================
 
@@ -165,9 +160,8 @@ class RecommendationTree:
         Insert multiple stocks into
         Preconditions:
         - stocks != []
-        - end_date
+        - end_date must be in the format of "YYYY-MM-DD"
         - self.is_empty() is not None
-        - end-date != ''
         """
         for stock in stocks:  # Classify each stock into game_tree
             try:
@@ -204,6 +198,7 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
         return recommendation_tree
 
 
+# @check_contracts
 def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percentage: int) -> list[str]:
     """
     Returns a list of stocks that chooses which stocks to buy.

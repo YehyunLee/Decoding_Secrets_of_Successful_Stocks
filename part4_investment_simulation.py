@@ -1,10 +1,5 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 3)
 
-Instructions (READ THIS FIRST!)
-===============================
-
-...
-
 Copyright and Usage Information
 ===============================
 
@@ -49,13 +44,11 @@ def benchmark_simulation(benchmark: str | list[str], start_date: str) -> dict[in
 
     Preconditions:
         - benchmark in {'^IXIC', '^GSPC'} or benchmark != []
-        - len(start_date) == 10
-        - start_date[4] == start_date[7] == '-'
-        - int(start_date[:4]) >= 2009
+        - start_date must be in the format of "YYYY-MM-DD"
     """
     record_percenage_for_each_year = {}
     start_year = int(start_date.split('-')[0]) + 1
-    end_year = int(datetime.today().strftime('%Y'))  # Convert string end_date to int
+    end_year = int(datetime.today().strftime('%Y'))  # Convert string end_date to int year
 
     if isinstance(benchmark, str):
         initial_price = get_price(benchmark, start_year)
@@ -86,7 +79,11 @@ def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> di
     2. Function creates a recommendation tree and decides which stocks to buy
     3. Calls the determining buy stocks option and buys according to risk factor
     4. Holds the stocks from start_date till present year and sells them
-    5. Retuns profit for ach year
+    5. Retuns profit for each year
+
+    Preconditions:
+        - buy_stocks != []
+        - start_date must be in the format of "YYYY-MM-DD"
     """
     start_year = int(start_date.split('-')[0]) + 1
     end_year = int(datetime.today().strftime('%Y'))  # Convert string end_date to int
@@ -106,3 +103,14 @@ def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> di
             calc_percentage = ((recent_price - initial_price) / initial_price) * 100
         record_percenage_for_each_year[each_year] = calc_percentage
     return record_percenage_for_each_year
+
+# if __name__ == '__main__':
+#     import doctest
+#     doctest.testmod(verbose=True)
+#
+#     import python_ta
+#     python_ta.check_all(config={
+#         'extra-imports': [part2_factor_data_processing],  # the names (strs) of imported modules
+#         'allowed-io': [],  # the names (strs) of functions that call print/open/input
+#         'max-line-length': 120
+#     })
