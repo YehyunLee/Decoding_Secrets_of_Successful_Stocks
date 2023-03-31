@@ -8,22 +8,22 @@ Instructions (READ THIS FIRST!)
 Copyright and Usage Information
 ===============================
 
-This file is provided solely for the personal and private use of students
-taking CSC111 at the University of Toronto St. George campus. All forms of
+This file is provided solely for the personal and private use of our group
+memebers at the University of Toronto St. George campus. All forms of
 distribution of this code, whether as given or with any changes, are
-expressly prohibited. For more information on copyright for CSC111 materials,
-please consult our Course Syllabus.
+expressly prohibited. For more information on copyright for this project,
+please consult Yehyun Lee at yehyun.lee@mail.utoronto.ca.
 
 This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
 
 from __future__ import annotations
 from typing import Optional
-import part1_factor_data_processing
-from python_ta.contracts import check_contracts
+import part2_factor_data_processing
+from lxml import etree  # This is only used for except statement. This is auto imported by pandas.
+from urllib.error import HTTPError  # Same case
 
 
-@check_contracts
 class RecommendationTree:
     """Recommendation Tree class.
 
@@ -160,7 +160,7 @@ class RecommendationTree:
         leafs_with_stock = [leaf._list_of_stocks for leaf in leafs]
         return {i+1: leaf for i, leaf in enumerate(leafs_with_stock)}
 
-    def insert_stocks(self, stocks: list[str], end_date: str) -> None:
+    def insert_stocks(self, stocks: list[str], end_date: str, factors: list[str]) -> None:
         """
         Insert multiple stocks into
         Preconditions:
@@ -172,32 +172,15 @@ class RecommendationTree:
         for stock in stocks:  # Classify each stock into game_tree
             try:
                 self.move_stock_to_subtree(
-                    (stock, part1_factor_data_processing.all_factors_correlation(stock, end_date)))
-            except:
+                    (stock, part2_factor_data_processing.all_factors_correlation(stock, end_date, factors)))
+            except (etree.XMLSyntaxError, HTTPError):
                 continue
 
-    # def __copy__(self) -> RecommendationTree:
-    #     """Creates a copy of the recommendation tree. This method is used to ensure that
-    #     the new recommendation tree and the old one does not have same id.
-    #     (i.e: if original mutates, the old one stays the same).
-    #     """
-    #     pass
 
-    # def remove_list_of_stocks(self):
-    #     """ Removes the list of stocks from each leaf
-    #     """
-    #     list_of_leafs = self.get_leaf_recommendation_tree()
-    #     for each_leaf in list_of_leafs:
-    #         each_leaf._list_of_stocks = []
+# [tree._list_of_stocks for tree in recommendation_tree.get_leaf_recommendation_tree() if tree._list_of_stocks != []]
 
-#Will be used as DOCTEST, DO NOT REMOVE
-
-# [a._list_of_stocks for a in recommendation_tree.get_leaf_recommendation_tree() if a._list_of_stocks != []]
-
-# MORE RIGHT, BETTER.
 
 def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
-    #maybe limit how many factors here??
     """
     Create a complete recommendation tree of depth d.
 
@@ -251,7 +234,7 @@ def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percent
 #
 #     import python_ta
 #     python_ta.check_all(config={
-#         'extra-imports': [part1_factor_data_processing],  # the names (strs) of imported modules
+#         'extra-imports': [part2_factor_data_processing],  # the names (strs) of imported modules
 #         'allowed-io': [],  # the names (strs) of functions that call print/open/input
 #         'max-line-length': 120
 #     })

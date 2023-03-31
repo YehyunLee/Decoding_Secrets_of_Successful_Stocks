@@ -1,11 +1,11 @@
-# import subprocess
-#
-# if __name__ == "__main__":
-#     subprocess.Popen("main.py", shell=True)
-
-
-# import module
+# https://github.com/streamlit/demo-self-driving
+# https://www.geeksforgeeks.org/a-beginners-guide-to-streamlit/
+import sys
+from streamlit.web import cli as stcli
 import streamlit as st
+
+# Set Title of Web Page
+st.set_page_config(page_title="Decoding the Secrets of Successful Stocks")
 
 # Title
 st.title("Hello GeeksForGeeks !!!")
@@ -18,6 +18,14 @@ st.subheader("This is a subheader")
 
 
 # Text
+
+# Tip 1
+# Dev Note: "⠀" is a blank symbol to fix streamlit error.
+# st.text("""⠀\t...
+
+# Tip 2
+# url = "https://github.com/YehyunLee/CSC111-Project"
+# st.write("For more information please visit our [project Github link](%s)" % url)
 st.text("Hello GeeksForGeeks!!!")
 
 
@@ -68,6 +76,12 @@ if st.checkbox("Show/Hide"):
 # first argument is the title of the radio button
 # second argument is the options for the radio button
 status = st.radio("Select Gender: ", ('Male', 'Female'))
+
+# status = st.radio(
+#     "Select Methods 👉",
+#     key="visibility",
+#     options=['Select All (Recommended)', 'Options', 'Manual (Expert Only)'],
+# )
 
 # conditional statement to print
 # Male if male is selected else print female
@@ -128,3 +142,7 @@ level = st.slider("Select the level", 1, 5)
 # format() is used to print value
 # of a variable at a specific position
 st.text('Selected: {}'.format(level))
+
+if __name__ == '__main__':
+    sys.argv = ["streamlit", "run", "template.py"]
+    sys.exit(stcli.main())

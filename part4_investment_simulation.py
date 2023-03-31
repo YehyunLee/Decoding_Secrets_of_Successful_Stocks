@@ -8,19 +8,17 @@ Instructions (READ THIS FIRST!)
 Copyright and Usage Information
 ===============================
 
-This file is provided solely for the personal and private use of students
-taking CSC111 at the University of Toronto St. George campus. All forms of
+This file is provided solely for the personal and private use of our group
+memebers at the University of Toronto St. George campus. All forms of
 distribution of this code, whether as given or with any changes, are
-expressly prohibited. For more information on copyright for CSC111 materials,
-please consult our Course Syllabus.
+expressly prohibited. For more information on copyright for this project,
+please consult Yehyun Lee at yehyun.lee@mail.utoronto.ca.
 
 This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
 
 from datetime import datetime
 from yahoofinancials import YahooFinancials
-
-stocks = ['MSFT', 'META']
 
 
 def get_price(stock: str, year: int) -> float:
@@ -89,12 +87,16 @@ def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> di
     record_percenage_for_each_year = {}
 
     initial_price = 0
-    for each_stock in buy_stocks:
-        initial_price += get_price(each_stock, start_year)
+    if not buy_stocks == []:
+        for each_stock in buy_stocks:
+            initial_price += get_price(each_stock, start_year)
     for each_year in range(start_year, end_year + 1):
         recent_price = 0
-        for each_stock in buy_stocks:
-            recent_price += get_price(each_stock, each_year)
-        calc_percentage = ((recent_price - initial_price) / initial_price) * 100
+        if not buy_stocks == []:
+            for each_stock in buy_stocks:
+                recent_price += get_price(each_stock, each_year)
+        calc_percentage = 0  # This ensures that function do not divide by 0
+        if not buy_stocks == []:
+            calc_percentage = ((recent_price - initial_price) / initial_price) * 100
         record_percenage_for_each_year[each_year] = calc_percentage
     return record_percenage_for_each_year

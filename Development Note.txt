@@ -52,3 +52,28 @@ Part3
 After implementing part 3, I wrote quick plotly code in main.py.
 First time seeing how our hard work paid off.
 Really proud of results.
+
+<March 30>
+Part4
+- Streamlit
+- Visualization
+
+<Announcement>
+As I am close to finishing the code, now, I expect everyone to work on overleaf even if we're not on call & even when we're not on code-together.
+
+You can work individually for overleaf, there's no doubt about that.
+
+Use your spare time on overleaf please.
+
+Starting tomorrow I cannot spend too much time on CS assignment due to 3 assignments I have to work on for other courses. At this point, I put sufficient amounts of work on CS, so I will be spending less time on project.
+
+Thus, I want everyone to take responsibility on finishing this CS project even when I am not instructing every details of what to do.
+
+You need to figure out what you need to do to make our project better.
+
+If you are not sure what are next steps & what are things to do, ask me.
+
+Hope for best.
+
+I will be in-person tmr with Hisham and work on CS project.
+Cya yall

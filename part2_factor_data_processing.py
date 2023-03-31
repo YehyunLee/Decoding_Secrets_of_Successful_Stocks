@@ -8,11 +8,11 @@ Instructions (READ THIS FIRST!)
 Copyright and Usage Information
 ===============================
 
-This file is provided solely for the personal and private use of students
-taking CSC111 at the University of Toronto St. George campus. All forms of
+This file is provided solely for the personal and private use of our group
+memebers at the University of Toronto St. George campus. All forms of
 distribution of this code, whether as given or with any changes, are
-expressly prohibited. For more information on copyright for CSC111 materials,
-please consult our Course Syllabus.
+expressly prohibited. For more information on copyright for this project,
+please consult Yehyun Lee at yehyun.lee@mail.utoronto.ca.
 
 This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
@@ -20,17 +20,15 @@ from yahoofinancials import YahooFinancials
 import pandas as pd
 import requests
 import csv
-
-# 1. data
-# stocks = input("Type list of stocks to possibibly invest, e.g. ['AAPL', 'META', 'MSFT']: ")
-# training_end_date = str(input(
-#     "Initial training date is 2009. Type end date you want to train the model. e.g. 2015-03-25: "))  at least
+from lxml import etree  # This is only used for except statement. This is auto imported by pandas.
+from urllib.error import HTTPError  # Same case
+import math
 
 
 def read_csv() -> list[str]:
     """Load data from csv file (filled with names of stocks) and return it in a list
     """
-    csv_file = 's&p500.csv'
+    csv_file = 'good&bad_stocks.csv'
     stocks_list = []
     with open(csv_file) as file:
         reader = csv.reader(file, delimiter=',')
@@ -38,6 +36,25 @@ def read_csv() -> list[str]:
         for row in reader:
             stocks_list.extend(row)
     return stocks_list
+
+def filter_stocks(stock_list: list[str], end_date: str) -> list[str]:
+    """
+    This function filter out stocks that data cannot be retrieved from and only
+    return stocks that the Yahoo Finance API has data on.
+
+    Preconditions:
+        - end_date must be in the format of "YYYY-MM-DD"
+        - stock_list != ""
+    """
+    list_so_far = []
+    for stock in stock_list:
+        try:
+            filter_stock = get_percentage_growth(stock, end_date)
+            if isinstance(filter_stock, float):
+                list_so_far.append(stock)
+        except(KeyError, IndexError, ValueError, TypeError, ImportError, AssertionError, ConnectionResetError, OSError):
+            continue
+    return list_so_far
 
 
 def get_percentage_growth(stock: str, end_date: str) -> float:
@@ -53,23 +70,12 @@ def get_percentage_growth(stock: str, end_date: str) -> float:
         - stock != ""
     """
     yahoo_financials = YahooFinancials(stock)
-    data = yahoo_financials.get_historical_price_data("2009-12-25", end_date, "daily")
+    data = yahoo_financials.get_historical_price_data("2009-01-01", end_date, "daily")  # Extract data
     prices = data[stock]['prices']
     initial_price = prices[0]['adjclose']
     recent_price = prices[len(prices) - 1]['adjclose']
     calc_percentage = ((recent_price - initial_price) / initial_price) * 100
     return calc_percentage
-
-    # from datetime import datetime, timedelta
-    # yahoo_financials = YahooFinancials(stock)
-    # stats = (yahoo_financials.get_historical_price_data("2009-01-27", "2009-01-28", 'daily'))
-    # initial_price = float(stats[stock]['prices'][0]['adjclose'])
-    # end_date_minus_one = datetime.strptime(end_date, '%Y-%m-%d')
-    # end_date_minus_one = end_date_minus_one.date() + timedelta(days=1)
-    # stats = (yahoo_financials.get_historical_price_data(end_date, end_date_minus_one.strftime('%Y-%m-%d'), 'daily'))
-    # recent_price = float(stats[stock]['prices'][0]['adjclose'])
-    # calc_percentage = ((recent_price - initial_price) / initial_price) * 100
-    # return calc_percentage
 
 
 def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> list[tuple[str, float]]:
@@ -94,7 +100,7 @@ def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> lis
 def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
     """
     Returns good stocks (top half) list from get_percentage_growth_of_stocks output.
-    Since <get_percentage_growth_of_stocks> returns a sorted list based on biggest to smallest percentage growth,
+    Since <get_percentage_growth_of_stocks> returns a sorted list based on biggest to the smallest percentage growth,
     top_half returns a list with stocks that have good percentage growths
 
     Preconditions:
@@ -121,7 +127,7 @@ def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
     df = pd.concat([df.columns.to_frame().T, df], ignore_index=True)  # Make it to frame
     df.columns = range(len(df.columns))
     df = df[1:]
-    # Average price and stock price is on the same page, thus, I need to split the cases.
+    # Average price and stock price is on the same page, thus, function needs to split the cases.
     if get_price is False:
         if 'stock-price-history' in link:
             df = df.iloc[:, [0, 1]]  # Get average price
@@ -131,8 +137,7 @@ def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
         df = df.iloc[:, [0, -2]]  # Get stock price
     return df
 
-
-def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
+def get_factors_data(stock: str, factors: list[str]) -> dict[str, pd.DataFrame | pd.Series]:
     """
     Return DataFrame of historical factor of stock. The DataFrame has the same function as obtain_factor_data but
     instead of only showing data for one factor, it will show data from all factors in the factor list <links>.
@@ -144,12 +149,8 @@ def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
     response = requests.get(url)
     new_url = str(response.url)
 
-    links = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
-             'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
-             'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
-             'net-income', 'shares-outstanding', 'stock-price-history']
-    # links = ['pe-ratio', 'price-sales', 'stock-price-history']
-    # stock-price-history here gets average price as well as stock price
+    links = factors + ['stock-price-history']
+    # 'stock-price-history' here gets average price as well as stock price
 
     dict_df = {}
     for link in links:
@@ -167,7 +168,7 @@ def get_factors_data(stock: str) -> dict[str, pd.DataFrame | pd.Series]:
 def clean_and_merge_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series],
                          end_date: str) -> pd.DataFrame | pd.Series:
     """
-    Function merges price data and factor data into one DataFrame.
+    Function cleans the data, then merges price data and factor data into one DataFrame.
 
     First, this function gets the data of the stock price and the factor values.
     It cleans up missing and incorrect values in the year column and converts each year into integer.
@@ -223,8 +224,7 @@ def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
     # method = 'pearson', 'spearman'
     return price_vs_factor_correlation[price_vs_factor_correlation.columns[1]][price_vs_factor_correlation.columns[0]]
 
-
-def all_factors_correlation(stock: str, end_date: str) -> dict[str, float]:
+def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> dict[str, float]:
     """
     Returns a dictionary of correlations in which the key is the factor in <factors> and the value is the
     correlation value based on the factor.
@@ -233,27 +233,31 @@ def all_factors_correlation(stock: str, end_date: str) -> dict[str, float]:
         - stock != ''
         - end_date must be in the format of "YYYY-MM-DD"
     """
-    dict_df = get_factors_data(stock)
-    factors = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
-               'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
-               'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
-               'net-income', 'shares-outstanding', 'average-price']
+    dict_df = get_factors_data(stock, factors)
+    copy_factors = factors + ['average-price']
     # factors = ['pe-ratio', 'price-sales', 'average-price']
     dict_of_correlations = {}
-    for factor in factors:
+    for factor in copy_factors:
         cleaned_data = clean_and_merge_data(factor, dict_df, end_date)
         dict_of_correlations[factor] = correlation(cleaned_data)
     return dict_of_correlations
 # sort lambda
 
+def filter_nan(factors_correlation: dict[str, float]) -> bool:
+    """
+    Return False if one of values in <factors_correlation> is NaN
 
-# standard deviation -> dataframe.std()
-# df['Col'].std()
+    Preconditions:
+        - factors_correlation != {}
+    """
+    for value in factors_correlation.values():
+        if math.isnan(value):
+            return False
+    return True
 
 
-# c = create_game_tree([('f3', 3), ('f2', 2), ('f1', 1)], 2)
-
-def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date: str) -> list[tuple[str, float]]:
+def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date: str, factors: list[str]) \
+        -> list[tuple[str, float]]:
     """
     Returns a sorted list of tuples based on the order which starts from worst factor to best factor.
 
@@ -264,8 +268,11 @@ def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date
     lst_of_dict = []
     for top_stock in top_ranked_stocks:
         try:
-            lst_of_dict.append(all_factors_correlation(top_stock[0], end_date))
-        except: #pd.XMLSyntaxError
+            factors_correlation = all_factors_correlation(top_stock[0], end_date, factors)
+            if not filter_nan(factors_correlation):
+                continue
+            lst_of_dict.append(all_factors_correlation(top_stock[0], end_date, factors))
+        except (etree.XMLSyntaxError, HTTPError):
             continue
     #   raise XMLSyntaxError("no text parsed from document", 0, 0, 0)
     #   File "<string>", line 0
