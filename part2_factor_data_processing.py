@@ -1,4 +1,4 @@
-"""CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 1)
+"""CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 2)
 
 Copyright and Usage Information
 ===============================
@@ -216,9 +216,7 @@ def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
     Returns the correlation of a single factor to  the stock price.
     """
     price_vs_factor_correlation = merged_df.corr(numeric_only=True)  # By default, pearson method.
-    # method = 'pearson', 'spearman'
-    return abs(price_vs_factor_correlation[price_vs_factor_correlation.columns[1]]
-               [price_vs_factor_correlation.columns[0]])
+    return price_vs_factor_correlation[price_vs_factor_correlation.columns[1]][price_vs_factor_correlation.columns[0]]
 
 
 def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> dict[str, float]:

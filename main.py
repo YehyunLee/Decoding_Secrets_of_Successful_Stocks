@@ -3,7 +3,10 @@
 Instructions (READ THIS FIRST!)
 ===============================
 
-...
+1. All files must be at same level folder.
+2. Install requirements.
+3. Run this file. Website powered by Streamlit will pop up.
+4. Choose options in website and click 'Run Program'.
 
 Copyright and Usage Information
 ===============================

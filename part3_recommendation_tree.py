@@ -1,4 +1,4 @@
-"""CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 2)
+"""CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 3)
 
 Copyright and Usage Information
 ===============================
