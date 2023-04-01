@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="March 31th Work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part1_user_input_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_user_input_visualization.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part2_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_factor_data_processing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part3_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part3_recommendation_tree.py" afterDir="false" />
@@ -94,6 +93,9 @@
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -133,6 +135,9 @@
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -397,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680298598981</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="March 31th Work">
+      <created>1680299979128</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1680299979128</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

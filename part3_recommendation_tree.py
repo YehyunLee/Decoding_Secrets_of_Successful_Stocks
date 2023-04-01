@@ -18,7 +18,10 @@ import part2_factor_data_processing
 from lxml import etree  # This is only used for except statement. This is auto imported by pandas.
 from urllib.error import HTTPError  # Same case
 
+from python_ta.contracts import check_contracts
 
+
+@check_contracts
 class RecommendationTree:
     """Recommendation Tree class.
 
@@ -174,6 +177,7 @@ class RecommendationTree:
 # [tree._list_of_stocks for tree in recommendation_tree.get_leaf_recommendation_tree() if tree._list_of_stocks != []]
 
 
+@check_contracts
 def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
     """
     Create a complete recommendation tree of depth d.
@@ -187,6 +191,7 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
         - d >= 0
     """
     root_factor, root_correlation = factors_correlation[d]
+    # print(root_factor, root_correlation)
     recommendation_tree = RecommendationTree(root_factor, root_correlation)
     if d == 0:  # Base Case
         return recommendation_tree
@@ -198,7 +203,7 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
         return recommendation_tree
 
 
-# @check_contracts
+@check_contracts
 def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percentage: int) -> list[str]:
     """
     Returns a list of stocks that chooses which stocks to buy.
