@@ -14,10 +14,10 @@ This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 
 from datetime import datetime
 from yahoofinancials import YahooFinancials
-from python_ta.contracts import check_contracts
+# from python_ta.contracts import check_contracts
 
 
-@check_contracts
+# @check_contracts
 def get_price(stock: str, year: int) -> float:
     """
     Function gets the stock price at the current year
@@ -32,7 +32,7 @@ def get_price(stock: str, year: int) -> float:
     return recent_price
 
 
-@check_contracts
+# @check_contracts
 def benchmark_simulation(benchmark: str | list[str], start_date: str) -> dict[int, float]:
     """
     Function is using either NASDAQ or S&P500 as a benchmark.
@@ -73,7 +73,7 @@ def benchmark_simulation(benchmark: str | list[str], start_date: str) -> dict[in
     return record_percenage_for_each_year
 
 
-@check_contracts
+# @check_contracts
 def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> dict[int, float]:
     """
     Creates a simulation starting from start date (which is the year after the data ends) to the

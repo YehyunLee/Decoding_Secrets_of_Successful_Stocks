@@ -19,7 +19,7 @@ from datetime import timedelta
 import plotly.graph_objs as go
 import streamlit as st
 
-from python_ta.contracts import check_contracts
+# from python_ta.contracts import check_contracts
 
 from PIL import Image  # Import image from pillow to open images
 
@@ -28,7 +28,7 @@ import part3_recommendation_tree
 import part4_investment_simulation
 
 
-@check_contracts
+# @check_contracts
 def user_input() -> None:
     """
     This function runs the Streamlit library and opens up the browser. The purpose
@@ -43,6 +43,7 @@ def user_input() -> None:
 
     st.text("Project by Yehyun Lee, Aung Zwe Maw and Wonjae Lee")
     st.text("Web page written and hosted by Yehyun Lee")
+    # This un-indent is needed. Due to st.text reading function tab as indent of texts.
     st.text("""Copyright and Usage Information
 ===============================
 
@@ -200,7 +201,7 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
                        f"{figure[3]}")
 
 
-@check_contracts
+# @check_contracts
 def run_program(list_of_stocks: list[str], training_end_date: str, risk_percentage: int, factors: list[str]) -> \
         tuple[go.Figure, list[str], list[tuple[str, float]], list[str]]:
     """Runs the simulation and returns a graph showing the end results (brings information from part 2, 3 and 4)"""
@@ -229,7 +230,7 @@ def run_program(list_of_stocks: list[str], training_end_date: str, risk_percenta
     return (fig, filter_stocks, best_factors, buy_stocks)
 
 
-@check_contracts
+# @check_contracts
 def visualization(benchmark_nasdaq_simulation: dict[int, float], benchmark_s_and_p500_simulation: dict[int, float],
                   benchmark_all_stocks_simulation: dict[int, float], recommendation_tree_simulation: dict[int, float]) \
         -> go.Figure:

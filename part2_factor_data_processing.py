@@ -18,10 +18,10 @@ import csv
 from lxml import etree  # This is only used for except statement. This is auto imported by pandas.
 from urllib.error import HTTPError  # Same case
 import math
-from python_ta.contracts import check_contracts
+# from python_ta.contracts import check_contracts
 
 
-@check_contracts
+# @check_contracts
 def read_csv() -> list[str]:
     """Load data from csv file (filled with names of stocks) and return it in a list
     """
@@ -35,7 +35,7 @@ def read_csv() -> list[str]:
     return stocks_list
 
 
-@check_contracts
+# @check_contracts
 def filter_stocks(stock_list: list[str], end_date: str) -> list[str]:
     """
     This function filter out stocks that data cannot be retrieved from and only
@@ -56,7 +56,7 @@ def filter_stocks(stock_list: list[str], end_date: str) -> list[str]:
     return list_so_far
 
 
-@check_contracts
+# @check_contracts
 def get_percentage_growth(stock: str, end_date: str) -> float:
     """
     Returns the percentage growth of the stock from start date (the year 2009) to <end_date> (the user inputs end_date)
@@ -78,7 +78,7 @@ def get_percentage_growth(stock: str, end_date: str) -> float:
     return calc_percentage
 
 
-@check_contracts
+# @check_contracts
 def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> list[tuple[str, float]]:
     """
     Returns a sorted list of tuples based on the percentage growth of each stock (biggest to smallest).
@@ -99,7 +99,7 @@ def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> lis
     return sorted_list
 
 
-@check_contracts
+# @check_contracts
 def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
     """
     Returns good stocks (top half) list from get_percentage_growth_of_stocks output.
@@ -113,7 +113,7 @@ def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
     return half_list
 
 
-@check_contracts
+# @check_contracts
 def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
     """
     Return DataFrame historical data of stock. The DataFrame is in the form of two columns.
@@ -142,7 +142,7 @@ def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
     return df
 
 
-@check_contracts
+# @check_contracts
 def get_factors_data(stock: str, factors: list[str]) -> dict[str, pd.DataFrame | pd.Series]:
     """
     Return DataFrame of historical factor of stock. The DataFrame has the same function as obtain_factor_data but
@@ -172,7 +172,7 @@ def get_factors_data(stock: str, factors: list[str]) -> dict[str, pd.DataFrame |
     return dict_df
 
 
-@check_contracts
+# @check_contracts
 def clean_and_merge_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Series],
                          end_date: str) -> pd.DataFrame | pd.Series:
     """
@@ -220,7 +220,7 @@ def clean_and_merge_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Serie
     return merged_df
 
 
-@check_contracts
+# @check_contracts
 def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
     """
     Returns the correlation of a single factor to  the stock price.
@@ -229,7 +229,7 @@ def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
     return price_vs_factor_correlation[price_vs_factor_correlation.columns[1]][price_vs_factor_correlation.columns[0]]
 
 
-@check_contracts
+# @check_contracts
 def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> dict[str, float]:
     """
     Returns a dictionary of correlations in which the key is the factor in <factors> and the value is the
@@ -249,7 +249,7 @@ def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> di
     return dict_of_correlations
 
 
-@check_contracts
+# @check_contracts
 def filter_nan(factors_correlation: dict[str, float]) -> bool:
     """
     Return False if one of values in <factors_correlation> is NaN
@@ -263,7 +263,7 @@ def filter_nan(factors_correlation: dict[str, float]) -> bool:
     return True
 
 
-@check_contracts
+# @check_contracts
 def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date: str, factors: list[str]) \
         -> list[tuple[str, float]]:
     """
