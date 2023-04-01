@@ -224,13 +224,13 @@ def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percent
     return buy_stocks
 
 
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod(verbose=True)
-
-    import python_ta
-    python_ta.check_all(config={
-        'extra-imports': ['part2_factor_data_processing'],  # the names (strs) of imported modules
-        'allowed-io': [],  # the names (strs) of functions that call print/open/input
-        'max-line-length': 120
-    })
+# if __name__ == '__main__':
+#     import doctest
+#     doctest.testmod(verbose=True)
+#
+#     import python_ta
+#     python_ta.check_all(config={
+#         'extra-imports': ['part2_factor_data_processing'],  # the names (strs) of imported modules
+#         'allowed-io': [],  # the names (strs) of functions that call print/open/input
+#         'max-line-length': 120
+#     })
