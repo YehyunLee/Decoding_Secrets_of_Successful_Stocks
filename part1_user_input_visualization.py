@@ -119,7 +119,7 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
         st.warning("We highly recommend you avoid using this option unless you are well aware of stocks that are "
                    "supported by APIs the program use. Some stocks may cause error. However, we've put internal work "
                    "to handle these issues. Give a shot! 🧪")
-        stocks = st.text_input("Write in list[str] form", "['MSFT', 'META', 'AAPL', 'GOOGL', 'SPY', 'SQQQ']")
+        stocks = st.text_input("Write in list[str] form", "['MSFT', 'META', 'AAPL', 'GOOGL', 'SQQQ']")
         stocks = [char.strip() for char in eval(stocks)]  # Remove spaces
 
     # Write the selected options
@@ -259,15 +259,16 @@ def visualization(benchmark_nasdaq_simulation: dict[int, float], benchmark_s_and
 # if (st.button("Author")):
 #     st.text("Welcome To GeeksForGeeks!!!")
 
-user_input()
 
-# if __name__ == '__main__':
-#     import doctest
-#     doctest.testmod(verbose=True)
-#
-#     import python_ta
-#     python_ta.check_all(config={
-#         'extra-imports': [part2_factor_data_processing],  # the names (strs) of imported modules
-#         'allowed-io': [],  # the names (strs) of functions that call print/open/input
-#         'max-line-length': 120
-#     })
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
+
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': [part2_factor_data_processing],  # the names (strs) of imported modules
+        'allowed-io': [],  # the names (strs) of functions that call print/open/input
+        'max-line-length': 120
+    })
+
+    user_input()
