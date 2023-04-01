@@ -13,18 +13,19 @@ This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
 from __future__ import annotations
 
-import part2_factor_data_processing
-import part3_recommendation_tree
-import part4_investment_simulation
+import datetime
+from datetime import timedelta
 
 import plotly.graph_objs as go
 import streamlit as st
 
 from python_ta.contracts import check_contracts
 
-import datetime
-from datetime import timedelta
 from PIL import Image  # Import image from pillow to open images
+
+import part2_factor_data_processing
+import part3_recommendation_tree
+import part4_investment_simulation
 
 
 @check_contracts
@@ -66,7 +67,7 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
     st.subheader("Project Goal")
 
     # Text
-    # Dev Note: "⠀" is a blank symbol to fix streamlit error.
+    # Dev Note: "⠀" is a blank symbol to fix streamlit error not having tab in first sentence.
     st.write("""⠀\tAs an investor, the question is, which stocks are most profitable in the long-term, and what factors
     contribute to their success? Our team will use a tree data structure to identify the promising factors
     and the most likely companies to invest in and utilize the backtesting approach to determine the
@@ -120,7 +121,7 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
                    "supported by APIs the program use. Some stocks may cause error. However, we've put internal work "
                    "to handle these issues. Give a shot! 🧪")
         stocks = st.text_input("Write in list[str] form", "['MSFT', 'META', 'AAPL', 'GOOGL', 'SQQQ']")
-        stocks = [char.strip() for char in eval(stocks)]  # Remove spaces
+        stocks = [char.strip() for char in eval(stocks)]  # Remove spaces, re-format incorrect input.
 
     # Write the selected options
     st.write("You selected", len(stocks), 'stocks')
@@ -188,11 +189,15 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
                 "If you click 'Run Program' again, it will re-run the program with updated options.")
         figure = run_program(stocks, end_date, risk_percent, factors_to_use)
         st.plotly_chart(figure[0])
-        st.success(f"Statistics: "
-                   f"Some stocks are not supported by APIs, thus, the program had to filter out the stocks. "
-                   f"Here are stocks that were used to train the model: "
-                   f"{figure[1]} Here are best factors and their correlation values that were used to determine list "
-                   f"of buy stocks: {figure[2]} Here are list of stocks that program decided to invest: {figure[3]}")
+
+        # Create a button, that when clicked, shows a text
+        if st.button("Show Statistics"):
+            st.success(f"Statistics: "
+                       f"Some stocks are not supported by APIs, thus, the program had to filter out the stocks. "
+                       f"Here are stocks that were used to train the model: "
+                       f"{figure[1]} Here are best factors and their correlation values that were used to determine "
+                       f"list of buy stocks: {figure[2]} Here are list of stocks that program decided to invest: "
+                       f"{figure[3]}")
 
 
 @check_contracts
@@ -223,41 +228,38 @@ def run_program(list_of_stocks: list[str], training_end_date: str, risk_percenta
                         recommendation_tree_simulation)
     return (fig, filter_stocks, best_factors, buy_stocks)
 
-# from plotly.basedatatypes import BaseFigure
 
 @check_contracts
 def visualization(benchmark_nasdaq_simulation: dict[int, float], benchmark_s_and_p500_simulation: dict[int, float],
                   benchmark_all_stocks_simulation: dict[int, float], recommendation_tree_simulation: dict[int, float]) \
         -> go.Figure:
+    """
+    The function takes dict[int, float] inputs and use them to make a figure data type. The function is used for making
+    graph figure, meaning visualization is used for visual purpose.
+    """
     nasdaq_years = list(benchmark_nasdaq_simulation.keys())
     nasdaq_values = list(benchmark_nasdaq_simulation.values())
 
     sp500_years = list(benchmark_s_and_p500_simulation.keys())
     sp500_values = list(benchmark_s_and_p500_simulation.values())
 
-    benchmark_all_stocks_simulation_years = list(benchmark_all_stocks_simulation.keys())
-    benchmark_all_stocks_simulation_values = list(benchmark_all_stocks_simulation.values())
+    benchmark_all_stocks_years = list(benchmark_all_stocks_simulation.keys())
+    benchmark_all_stocks_values = list(benchmark_all_stocks_simulation.values())
 
-    recommendation_tree_simulation_years = list(recommendation_tree_simulation.keys())
-    recommendation_tree_simulation_values = list(recommendation_tree_simulation.values())
+    recommendation_tree_years = list(recommendation_tree_simulation.keys())
+    recommendation_tree_values = list(recommendation_tree_simulation.values())
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=nasdaq_years, y=nasdaq_values, name='NASDAQ'))
     fig.add_trace(go.Scatter(x=sp500_years, y=sp500_values, name='S&P500'))
-    fig.add_trace(go.Scatter(x=benchmark_all_stocks_simulation_years, y=benchmark_all_stocks_simulation_values,
+    fig.add_trace(go.Scatter(x=benchmark_all_stocks_years, y=benchmark_all_stocks_values,
                              name='All User Input Stocks'))
-    fig.add_trace(go.Scatter(x=recommendation_tree_simulation_years, y=recommendation_tree_simulation_values,
+    fig.add_trace(go.Scatter(x=recommendation_tree_years, y=recommendation_tree_values,
                              name='Recommendation Tree Filtered Stocks'))
 
     fig.update_layout(title='Simulation Results', xaxis_title='Year', yaxis_title='Return on Investment (%)')
-    # You can also try fig.show()
-    # fig type is <class 'plotly.graph_objs._figure.Figure'>
+    # Try fig.show()
     return fig
-
-
-# # Create a button, that when clicked, shows a text
-# if (st.button("Author")):
-#     st.text("Welcome To GeeksForGeeks!!!")
 
 
 if __name__ == '__main__':
@@ -266,9 +268,15 @@ if __name__ == '__main__':
 
     import python_ta
     python_ta.check_all(config={
-        'extra-imports': [part2_factor_data_processing],  # the names (strs) of imported modules
-        'allowed-io': [],  # the names (strs) of functions that call print/open/input
-        'max-line-length': 120
+        'extra-imports': ['part2_factor_data_processing', 'part3_recommendation_tree', 'part3_recommendation_tree',
+                          'part4_investment_simulation', 'plotly.graph_objs', 'datetime', 'PIL', 'streamlit'],
+        'allowed-io': ['user_input'],
+        'max-line-length': 120,
+        'disable': ['trailing-whitespace', 'consider-using-f-string', 'too-many-statements', 'eval-used']
+        # These disable options are all for streamlit limitation.
+        # 'trailing-whitespace': First sentence cannot have tab. Thus, blank symbol is included, then tab is added.
+        # 'consider-using-f-string': Markdown cannot have f string.
+        # 'too-many-statements' and 'eval-used' is needed for perfectness of website.
     })
 
     user_input()

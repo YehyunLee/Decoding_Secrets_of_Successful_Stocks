@@ -19,19 +19,10 @@ please consult Yehyun Lee at yehyun.lee@mail.utoronto.ca.
 
 This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
+import sys
+from streamlit.web import cli as stcli
 
 
 if __name__ == '__main__':
-    import sys
-    from streamlit.web import cli as stcli
     sys.argv = ["streamlit", "run", "part1_user_input_visualization.py"]
     sys.exit(stcli.main())
-
-    # import doctest
-    # doctest.testmod(verbose=True)
-    #
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'extra-imports': [part2_factor_data_processing, part3_recommendation_tree, part4_investment_simulation],
-    #     'allowed-io': ['main'],
-    # })
