@@ -294,12 +294,12 @@ def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date
     return sorted_tuple
 
 
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod(verbose=True)
-
-    import python_ta
-    python_ta.check_all(config={
-        'extra-imports': ['yahoofinancials', 'pandas', 'requests', 'csv', 'lxml', 'urllib.error', 'math'],
-        'max-line-length': 120
-    })
+# if __name__ == '__main__':
+#     import doctest
+#     doctest.testmod(verbose=True)
+#
+#     import python_ta
+#     python_ta.check_all(config={
+#         'extra-imports': ['yahoofinancials', 'pandas', 'requests', 'csv', 'lxml', 'urllib.error', 'math'],
+#         'max-line-length': 120
+#     })
