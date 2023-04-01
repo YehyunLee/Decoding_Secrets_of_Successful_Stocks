@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="April 1st Work">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part4_investment_simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/part4_investment_simulation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_factor_data_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part3_recommendation_tree.py" afterDir="false" />
     </list>
     <list id="4a4b6880-104e-4eb5-9649-458d4df61af6" name="Changes by azmha" comment="March 31th Work" />
     <list id="fca62870-bfb0-4777-a5cf-648a5da505c9" name="Changes by Wonjae Lee" comment="V1" />
@@ -67,7 +69,7 @@
       <recent name="C:\Users\glad7\PycharmProjects\CSC111 Project\Test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.part2_factor_data_processing">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -81,6 +83,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="part2_factor_data_processing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CSC111-Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part2_factor_data_processing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -125,27 +145,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="template" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="CSC111-Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test/template.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="Doctest RecommendationTree.__str__" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -166,11 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.part2_factor_data_processing" />
         <item itemvalue="Python.part3_recommendation_tree" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Doctest RecommendationTree.__str__" />
         <item itemvalue="Python.part4_investment_simulation" />
-        <item itemvalue="Python.template" />
       </list>
     </recent_temporary>
   </component>
@@ -442,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680373366357</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="April 1st Work">
+      <created>1680373466009</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1680373466009</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

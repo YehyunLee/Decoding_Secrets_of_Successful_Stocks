@@ -14,9 +14,10 @@ This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 
 from __future__ import annotations
 from typing import Optional
-import part2_factor_data_processing
-from lxml import etree  # This is only used for except statement. This is auto imported by pandas.
 from urllib.error import HTTPError  # Same case
+from lxml import etree  # This is only used for except statement. This is auto imported by pandas.
+import part2_factor_data_processing
+
 
 # from python_ta.contracts import check_contracts
 
@@ -106,7 +107,7 @@ class RecommendationTree:
         else:
             self._right_subtree = subtree
 
-    def move_stock_to_subtree(self, stock: tuple[str, dict[str, float]]):
+    def move_stock_to_subtree(self, stock: tuple[str, dict[str, float]]) -> None:
         """
         Compare the average correlation value of the node and the given stock's factor
         correlation value. If the stock has the higher correlation value, it moves to left
@@ -152,7 +153,7 @@ class RecommendationTree:
         """
         leafs = self.get_leaf_recommendation_tree()
         leafs_with_stock = [leaf._list_of_stocks for leaf in leafs]
-        return {i+1: leaf for i, leaf in enumerate(leafs_with_stock)}
+        return {i + 1: leaf for i, leaf in enumerate(leafs_with_stock)}
 
     def insert_stocks(self, stocks: list[str], end_date: str, factors: list[str]) -> None:
         """
@@ -168,6 +169,7 @@ class RecommendationTree:
                     (stock, part2_factor_data_processing.all_factors_correlation(stock, end_date, factors)))
             except (etree.XMLSyntaxError, HTTPError):
                 continue
+
 
 # Command for just getting list of stocks without empty list.
 # Please ignore. This is for development testing purpose.
@@ -192,9 +194,9 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
     if d == 0:  # Base Case
         return recommendation_tree
     else:
-        left_subtree = create_recommendation_tree(factors_correlation, d - 1)   # Recursion Step
+        left_subtree = create_recommendation_tree(factors_correlation, d - 1)  # Recursion Step
         right_subtree = create_recommendation_tree(factors_correlation, d - 1)
-        recommendation_tree.add_subtree('left', left_subtree)   # Add to subtree
+        recommendation_tree.add_subtree('left', left_subtree)  # Add to subtree
         recommendation_tree.add_subtree('right', right_subtree)  # Avoid using same tree with same ID.
         return recommendation_tree
 
@@ -224,13 +226,13 @@ def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percent
     return buy_stocks
 
 
-# if __name__ == '__main__':
-#     import doctest
-#     doctest.testmod(verbose=True)
-#
-#     import python_ta
-#     python_ta.check_all(config={
-#         'extra-imports': ['part2_factor_data_processing'],  # the names (strs) of imported modules
-#         'allowed-io': [],  # the names (strs) of functions that call print/open/input
-#         'max-line-length': 120
-#     })
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
+
+    import python_ta
+    python_ta.check_all(config={
+        # the names (strs) of imported modules
+        'extra-imports': ['part2_factor_data_processing', 'urllib.error', 'lxml'],
+        'max-line-length': 120
+    })
