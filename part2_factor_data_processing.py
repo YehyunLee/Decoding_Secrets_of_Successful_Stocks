@@ -297,13 +297,19 @@ def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date
     sorted_tuple = sorted(convert_to_tuple, key=lambda x: x[1])
     return sorted_tuple
 
-# if __name__ == '__main__':
-#     import doctest
-#     doctest.testmod(verbose=True)
-#
-#     import python_ta
-#     python_ta.check_all(config={
-#         'extra-imports': [part2_factor_data_processing],  # the names (strs) of imported modules
-#         'allowed-io': [],  # the names (strs) of functions that call print/open/input
-#         'max-line-length': 120
-#     })
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
+
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['yahoofinancials', 'pandas', 'requests', 'csv', 'lxml', 'urllib.error', 'math'],
+        'max-line-length': 120
+    })
+
+# 'disable': ['trailing-whitespace', 'consider-using-f-string', 'too-many-statements', 'eval-used']
+# These disable options are all for streamlit limitation.
+# 'trailing-whitespace': First sentence cannot have tab. Thus, blank symbol is included, then tab is added.
+# 'consider-using-f-string': Markdown cannot have f string.
+# 'too-many-statements' and 'eval-used' is needed for perfectness of website.
