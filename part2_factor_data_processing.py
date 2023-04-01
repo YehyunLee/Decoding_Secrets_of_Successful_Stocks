@@ -242,7 +242,6 @@ def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> di
     """
     dict_df = get_factors_data(stock, factors)
     copy_factors = factors + ['average-price']
-    # factors = ['pe-ratio', 'price-sales', 'average-price']
     dict_of_correlations = {}
     for factor in copy_factors:
         cleaned_data = clean_and_merge_data(factor, dict_df, end_date)
@@ -276,25 +275,22 @@ def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date
         - factors != []
     """
     lst_of_dict = []
-    for top_stock in top_ranked_stocks:
+    for top_stock in top_ranked_stocks:  # Collects all correlation values
         try:
             factors_correlation = all_factors_correlation(top_stock[0], end_date, factors)
-            if not filter_nan(factors_correlation):
+            if not filter_nan(factors_correlation):  # Filter out the NaN
                 continue
             lst_of_dict.append(all_factors_correlation(top_stock[0], end_date, factors))
         except (etree.XMLSyntaxError, HTTPError):
             continue
-    #   raise XMLSyntaxError("no text parsed from document", 0, 0, 0)
-    #   File "<string>", line 0
-    # lxml.etree.XMLSyntaxError: no text parsed from document
 
     average_factor_correlation = {}
-    for factor in lst_of_dict[0].keys():
+    for factor in lst_of_dict[0].keys():  # Take the average of all correlation values of each factor
         combined_tuple = tuple(each_top_stock[factor] for each_top_stock in lst_of_dict)
         average_factor_correlation[factor] = sum(combined_tuple) / len(combined_tuple)
 
     convert_to_tuple = [(factor, correlation_value) for factor, correlation_value in average_factor_correlation.items()]
-    sorted_tuple = sorted(convert_to_tuple, key=lambda x: x[1])
+    sorted_tuple = sorted(convert_to_tuple, key=lambda x: x[1])  # Sort factors based on their average correlation value
     return sorted_tuple
 
 

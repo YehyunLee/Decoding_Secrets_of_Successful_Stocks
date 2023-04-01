@@ -107,13 +107,13 @@ def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> di
         record_percenage_for_each_year[each_year] = calc_percentage
     return record_percenage_for_each_year
 
-# if __name__ == '__main__':
-#     import doctest
-#     doctest.testmod(verbose=True)
-#
-#     import python_ta
-#     python_ta.check_all(config={
-#         'extra-imports': [part2_factor_data_processing],  # the names (strs) of imported modules
-#         'allowed-io': [],  # the names (strs) of functions that call print/open/input
-#         'max-line-length': 120
-#     })
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
+
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['datetime', 'yahoofinancials'],  # the names (strs) of imported modules
+        'max-line-length': 120
+    })

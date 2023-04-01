@@ -29,25 +29,19 @@ class RecommendationTree:
         - factor: the factor for this current Recommendation Tree
         - correlation: the correlation for this current Recommendation Tree
 
+    Private Instance Attributes:
+      - _left_subtree:
+          The left subtree, or None if this tree is empty
+      - _right_subtree:
+          The right subtree, or None if this tree is empty
+      - _list_of_stocks:
+          List of all stocks that the tree holds, or None if this tree is empty
+
     Representation Invariants:
         - If self.factor is None, then all other Instance Attributes are None.
     """
-
-    # corr value float
-    # factor name str ex) 'pe-ratio'
-    # links = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
-    #          'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
-    #          'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
-    #          'net-income', 'shares-outstanding', 'stock-price-history']
-    # subtrees
     factor: Optional[str]
     correlation: Optional[float]
-
-    # Private Instance Attributes:
-    #   - _left_subtree:
-    #       The left subtree, or None if this tree is empty
-    #   - _right_subtree:
-    #       The right subtree, or None if this tree is empty
 
     _left_subtree: Optional[RecommendationTree]
     _right_subtree: Optional[RecommendationTree]
@@ -71,24 +65,25 @@ class RecommendationTree:
             self._right_subtree = RecommendationTree(None, None)  # self._right_subtree is an empty RecommendationTree
             self._list_of_stocks = []
 
-    # def find_subtree_by_move(self, move: str | tuple[str, ...]) -> Optional[RecommendationTree]:
-    #     """Return the subtree corresponding to the given move.
-    #
-    #     Return None if no subtree corresponds to that move.
-    #     """
-    #     if move in self._left_subtree:
-    #         return self._left_subtree.move
-    #     elif move in self._right_subtree:
-    #         return self._right_subtree.move
-    #     else:
-    #         return None
-
+    # Please ignore this. Program does not use str method. This is for testing purpose.
     def __str__(self) -> str:
         """Return a string representation of this tree.
 
+        Example)
+        # In terminal try:
+        # f1 = RecommendationTree('Factor 1', 0.5)
+        # f2_left = RecommendationTree('Factor 2', 0.4)
+        # f2_right = RecommendationTree('Factor 2', 0.4)
+        # f1.add_subtree('left', f2_left)
+        # f1.add_subtree('right', f2_right)
+        # print(f1)
+        # Factor 1:
+        #   Factor 2:
+        #   Factor 2:
         """
         return self._str_indented(0)
 
+    # Testing purpose. Program does not use this method.
     def _str_indented(self, depth: int) -> str:
         """Return an indented string representation of this tree.
         The indentation level is specified by the <depth> parameter.
@@ -115,17 +110,18 @@ class RecommendationTree:
         """
         Compare the average correlation value of the node and the given stock's factor
         correlation value. If the stock has the higher correlation value, it moves to left
-        subtree and moves right if it is lower
+        subtree and moves right if it is lower.
+
+        *stock[0] is the stock name*
+        1. compare correlation
+        2. determine where to go, left or right
+        3. go into that subtree and recall this method
+        4. stop at leaf
+        5. append stock name to list_of_stocks
 
         Preconditions:
             - self.factor in stock[1]
         """
-        # stock[0] is the stock name
-        # 1 compare correlation
-        # 2 determine where to go, left or right
-        # 3 go into that subtree and recall this method
-        # 4 stop at leaf
-        # 5 append stock name to list_of_stocks
         if self._left_subtree.factor is None and self._right_subtree.factor is None:
             self._list_of_stocks.append(stock[0])
         else:
@@ -173,7 +169,8 @@ class RecommendationTree:
             except (etree.XMLSyntaxError, HTTPError):
                 continue
 
-
+# Command for just getting list of stocks without empty list.
+# Please ignore. This is for development testing purpose.
 # [tree._list_of_stocks for tree in recommendation_tree.get_leaf_recommendation_tree() if tree._list_of_stocks != []]
 
 
@@ -198,7 +195,7 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
         left_subtree = create_recommendation_tree(factors_correlation, d - 1)   # Recursion Step
         right_subtree = create_recommendation_tree(factors_correlation, d - 1)
         recommendation_tree.add_subtree('left', left_subtree)   # Add to subtree
-        recommendation_tree.add_subtree('right', right_subtree)
+        recommendation_tree.add_subtree('right', right_subtree)  # Avoid using same tree with same ID.
         return recommendation_tree
 
 
@@ -227,13 +224,13 @@ def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percent
     return buy_stocks
 
 
-# if __name__ == '__main__':
-#     import doctest
-#     doctest.testmod(verbose=True)
-#
-#     import python_ta
-#     python_ta.check_all(config={
-#         'extra-imports': [part2_factor_data_processing],  # the names (strs) of imported modules
-#         'allowed-io': [],  # the names (strs) of functions that call print/open/input
-#         'max-line-length': 120
-#     })
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
+
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['part2_factor_data_processing'],  # the names (strs) of imported modules
+        'allowed-io': [],  # the names (strs) of functions that call print/open/input
+        'max-line-length': 120
+    })

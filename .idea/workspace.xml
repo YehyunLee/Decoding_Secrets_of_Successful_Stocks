@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="April 1st Work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part1_user_input_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_user_input_visualization.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part2_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_factor_data_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part3_recommendation_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part4_investment_simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/part4_investment_simulation.py" afterDir="false" />
     </list>
     <list id="4a4b6880-104e-4eb5-9649-458d4df61af6" name="Changes by azmha" comment="March 31th Work" />
     <list id="fca62870-bfb0-4777-a5cf-648a5da505c9" name="Changes by Wonjae Lee" comment="V1" />
@@ -25,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="latest_version" />
+        <entry key="$PROJECT_DIR$" value="python-ta_fix" />
       </map>
     </option>
   </component>
@@ -67,41 +71,17 @@
       <recent name="C:\Users\glad7\PycharmProjects\CSC111 Project\Test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.part2_factor_data_processing">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.part3_recommendation_tree">
+    <configuration name="part3_recommendation_tree" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="part1_user_input_visualization" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="CSC111-Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part1_user_input_visualization.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part3_recommendation_tree.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -110,7 +90,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="part2_factor_data_processing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="part4_investment_simulation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -119,7 +99,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part2_factor_data_processing.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part4_investment_simulation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,13 +150,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Doctest RecommendationTree.__str__" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="CSC111-Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part3_recommendation_tree.py" />
+      <option name="CLASS_NAME" value="RecommendationTree" />
+      <option name="METHOD_NAME" value="__str__" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.part2_factor_data_processing" />
-        <item itemvalue="Python.part1_user_input_visualization" />
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.part3_recommendation_tree" />
+        <item itemvalue="Python tests.Doctest RecommendationTree.__str__" />
+        <item itemvalue="Python.part4_investment_simulation" />
+        <item itemvalue="Python.template" />
         <item itemvalue="Python.run" />
-        <item itemvalue="Python.part1_user_input_visualization" />
       </list>
     </recent_temporary>
   </component>

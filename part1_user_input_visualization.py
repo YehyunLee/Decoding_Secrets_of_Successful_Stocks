@@ -270,7 +270,8 @@ if __name__ == '__main__':
     python_ta.check_all(config={
         'extra-imports': ['part2_factor_data_processing', 'part3_recommendation_tree', 'part3_recommendation_tree',
                           'part4_investment_simulation', 'plotly.graph_objs', 'datetime', 'PIL', 'streamlit'],
-        'allowed-io': ['user_input'],
+        # the names (strs) of imported modules
+        'allowed-io': ['user_input'],  # the names (strs) of functions that call print/open/input
         'max-line-length': 120,
         'disable': ['trailing-whitespace', 'consider-using-f-string', 'too-many-statements', 'eval-used']
         # These disable options are all for streamlit limitation.

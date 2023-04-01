@@ -24,5 +24,8 @@ from streamlit.web import cli as stcli
 
 
 if __name__ == '__main__':
+    # By using sys, TA do not need to copy-paste command in their terminal.
+    # This will automatically do the job for running streamlit.
+    # Part 1 will then run "Run Program" which calls for part 2, 3, 4.
     sys.argv = ["streamlit", "run", "part1_user_input_visualization.py"]
     sys.exit(stcli.main())
