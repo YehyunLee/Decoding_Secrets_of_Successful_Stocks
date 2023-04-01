@@ -190,15 +190,14 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
                 "If you click 'Run Program' again, it will re-run the program with updated options.")
         figure = run_program(stocks, end_date, risk_percent, factors_to_use)
         st.plotly_chart(figure[0])
-
-        # Create a button, that when clicked, shows a text
-        if st.button("Show Statistics"):
-            st.success(f"Statistics: "
-                       f"Some stocks are not supported by APIs, thus, the program had to filter out the stocks. "
-                       f"Here are stocks that were used to train the model: "
-                       f"{figure[1]} Here are best factors and their correlation values that were used to determine "
-                       f"list of buy stocks: {figure[2]} Here are list of stocks that program decided to invest: "
-                       f"{figure[3]}")
+        st.write("Statistics: ")
+        st.success(f"Some stocks are not supported by APIs, thus, the program had to filter out the stocks. "
+                   f"Here are stocks that were used to train the model: "
+                   f"{figure[1]}")
+        st.success("Here are ranked factors and their correlation values that were used to determine "
+                   f"list of buy stocks: {figure[2]}")
+        st.success("Here are list of stocks that program decided to invest: "
+                   f"{figure[3]}")
 
 
 # @check_contracts

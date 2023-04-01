@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="April 1st Work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/part3_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part3_recommendation_tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part1_user_input_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_user_input_visualization.py" afterDir="false" />
     </list>
     <list id="4a4b6880-104e-4eb5-9649-458d4df61af6" name="Changes by azmha" comment="March 31th Work" />
     <list id="fca62870-bfb0-4777-a5cf-648a5da505c9" name="Changes by Wonjae Lee" comment="V1" />
@@ -73,7 +72,7 @@
       <recent name="C:\Users\glad7\PycharmProjects\CSC111 Project\Test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.part2_factor_data_processing">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,6 +98,9 @@
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -117,6 +119,9 @@
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -172,8 +177,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.part2_factor_data_processing" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.part2_factor_data_processing" />
         <item itemvalue="Python.part3_recommendation_tree" />
         <item itemvalue="Python tests.Doctest RecommendationTree.__str__" />
         <item itemvalue="Python.part4_investment_simulation" />
@@ -455,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680373466009</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="April 1st Work">
+      <created>1680381043542</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1680381043542</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
