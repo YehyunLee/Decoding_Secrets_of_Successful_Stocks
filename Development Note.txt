@@ -77,3 +77,12 @@ Hope for best.
 
 I will be in-person tmr with Hisham and work on CS project.
 Cya yall
+
+<March 31>
+Part0,1,2,3 renamed to 1,2,3,4
+- Streamlit
+- Visualization
+- Architecture changed
+- Main
+- Debugging
+- LaTeX

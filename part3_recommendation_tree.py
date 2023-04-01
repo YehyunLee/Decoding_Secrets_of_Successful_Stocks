@@ -191,7 +191,6 @@ def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: 
         - d >= 0
     """
     root_factor, root_correlation = factors_correlation[d]
-    # print(root_factor, root_correlation)
     recommendation_tree = RecommendationTree(root_factor, root_correlation)
     if d == 0:  # Base Case
         return recommendation_tree

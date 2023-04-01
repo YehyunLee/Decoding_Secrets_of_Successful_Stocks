@@ -107,7 +107,7 @@ def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
     top_half returns a list with stocks that have good percentage growths
 
     Preconditions:
-        - sorted_list != []
+        - sorted_list != [] and len(sorted_list) >= 2
     """
     half_list = sorted_list[:len(sorted_list) // 2]  # Takes top half
     return half_list

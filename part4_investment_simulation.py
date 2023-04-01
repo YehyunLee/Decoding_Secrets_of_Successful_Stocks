@@ -86,7 +86,6 @@ def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> di
     5. Retuns profit for each year
 
     Preconditions:
-        - buy_stocks != []
         - start_date must be in the format of "YYYY-MM-DD"
     """
     start_year = int(start_date.split('-')[0]) + 1

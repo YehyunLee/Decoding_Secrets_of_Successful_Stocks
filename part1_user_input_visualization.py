@@ -92,7 +92,8 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
     affected us and we were also willing to explore the trends along with him.""")
 
     url = "https://github.com/YehyunLee/CSC111-Project"
-    st.write("For more information about our project, please visit [Yehyun's Github](%s)" % url)
+    st.write("For more information about our project, please visit [Yehyun's Github](%s) and check the LaTeX file"
+             "." % url)
 
     # Header
     st.header("User Input")
@@ -102,6 +103,8 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
 
     # Subheader
     st.subheader("Choosing Stocks")
+
+    st.warning("Please select more than 2 stocks by precondition.")
 
     # Radio Button
     status1 = st.radio("Select Methods 👉", ('Select All (Recommended)', 'Options', 'Manual (Expert Only)'))
@@ -152,15 +155,17 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
     # Subheader
     st.subheader("Choosing Factors")
 
+    st.warning("Choosing many factors cause significant increase of running time due to nature of Recommendation Tree!")
+
     # Radio Button
-    status2 = st.radio("Select Factors 👉", ('Select All (Recommended)', 'Options'))
+    status2 = st.radio("Select Factors 👉", ('Select All', 'Options (Recommended)'))
     st.info("The 'average-price' factor will be included as a minimum requirement.")
     factors_to_use = ['pe-ratio', 'price-sales', 'price-book', 'roe', 'roa', 'return-on-tangible-equity',
                       'number-of-employees', 'current-ratio', 'quick-ratio', 'total-liabilities',
                       'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue',
                       'gross-profit', 'net-income', 'shares-outstanding']
 
-    if status2 == 'Options':
+    if status2 == 'Options (Recommended)':
         # Multi select box
         factors_to_use = st.multiselect('Select Factors', factors_to_use)
 
@@ -173,7 +178,7 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
     st.success(f"Stocks: {stocks}")
     st.success(f"Start Investing: {end_datetime + timedelta(days=365)}")
     st.success(f"Risk Percentage: {risk_percent}%")
-    st.success(f"Factors: {factors_to_use}")
+    st.success(f"Factors: {factors_to_use + ['average-price']}")
 
     # Run Program
     if st.button('Run Program'):
@@ -218,10 +223,12 @@ def run_program(list_of_stocks: list[str], training_end_date: str, risk_percenta
                         recommendation_tree_simulation)
     return (fig, filter_stocks, best_factors, buy_stocks)
 
+# from plotly.basedatatypes import BaseFigure
 
 @check_contracts
-def visualization(benchmark_nasdaq_simulation: dict[int: float], benchmark_s_and_p500_simulation: dict[int: float],
-                  benchmark_all_stocks_simulation: dict[int: float], recommendation_tree_simulation) -> go.Figure:
+def visualization(benchmark_nasdaq_simulation: dict[int, float], benchmark_s_and_p500_simulation: dict[int, float],
+                  benchmark_all_stocks_simulation: dict[int, float], recommendation_tree_simulation: dict[int, float]) \
+        -> go.Figure:
     nasdaq_years = list(benchmark_nasdaq_simulation.keys())
     nasdaq_values = list(benchmark_nasdaq_simulation.values())
 
