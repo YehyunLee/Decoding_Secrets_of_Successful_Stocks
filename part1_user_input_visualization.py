@@ -147,7 +147,7 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
             "If risk percentage is 100%, program invest all stocks including bad performing stocks. "
             "If 10%, program invest top 10% of ranked stocks. "
             "A lower risk percentage leads to investment of fewer stocks but only top performing stocks. "
-            "Default value is set to 50%.")
+            "Default value is set to 50%. Try 1% or 10%!")
     risk_percent = st.slider("Select Risk Percentage (%)", 1, 100, value=50)
 
     # Print the risk_percent
