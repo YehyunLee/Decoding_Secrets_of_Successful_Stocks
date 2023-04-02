@@ -1,5 +1,11 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 4)
 
+Description
+==============================================================
+This module contains the code for simulation of benchmark
+and Recommendation Tree Filtered Stocks and shows return on
+investment, meaning it shows how much profit is made.
+
 Copyright and Usage Information
 ==============================================================
 

@@ -1,5 +1,10 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 2)
 
+Description
+==============================================================
+This module contains the code to process, clean and merge the
+necessary data from the Yahoo Finance and Macrotrends website.
+
 Copyright and Usage Information
 ==============================================================
 
