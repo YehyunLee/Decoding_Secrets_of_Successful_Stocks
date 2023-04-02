@@ -258,19 +258,23 @@ def visualization(benchmark_nasdaq_simulation: dict[int, float], benchmark_s_and
     The function takes dict[int, float] inputs and use them to make a figure data type. The function is used for making
     graph figure, meaning visualization is used for visual purpose.
     """
+    # x, y coordinates from NASDAQ
     nasdaq_years = list(benchmark_nasdaq_simulation.keys())
     nasdaq_values = list(benchmark_nasdaq_simulation.values())
 
+    # x, y coordinations from S&P500
     sp500_years = list(benchmark_s_and_p500_simulation.keys())
     sp500_values = list(benchmark_s_and_p500_simulation.values())
 
+    # x, y coordinates from benchmark of All User Input Stocks
     benchmark_all_stocks_years = list(benchmark_all_stocks_simulation.keys())
     benchmark_all_stocks_values = list(benchmark_all_stocks_simulation.values())
 
+    # x, y coordinates from Recommendation Tree Filtered Stocks
     recommendation_tree_years = list(recommendation_tree_simulation.keys())
     recommendation_tree_values = list(recommendation_tree_simulation.values())
 
-    fig = go.Figure()
+    fig = go.Figure()   # Add all coordinates to plot
     fig.add_trace(go.Scatter(x=nasdaq_years, y=nasdaq_values, name='NASDAQ'))
     fig.add_trace(go.Scatter(x=sp500_years, y=sp500_values, name='S&P500'))
     fig.add_trace(go.Scatter(x=benchmark_all_stocks_years, y=benchmark_all_stocks_values,

@@ -29,6 +29,7 @@ def get_price(stock: str, year: int) -> float:
     # For simplicity, this is set to Jan 1 to Jan 5,
     # and the most recent data i.e. Jan 5th is taken (assuming this is not weekend.)
     data = yahoo_financials.get_historical_price_data(str(year) + '-01-01', str(year) + '-01-05', "daily")
+    # Extract information on prices from <data> variable. <data> returns a dictionary so that is why we are using keys.
     prices = data[stock]['prices']
     recent_price = prices[len(prices) - 1]['adjclose']
     return recent_price
@@ -59,7 +60,8 @@ def benchmark_simulation(benchmark: str | list[str], start_date: str) -> dict[in
         initial_price = get_price(benchmark, start_year)
         for each_year in range(start_year, end_year + 1):
             recent_price = get_price(benchmark, each_year)
-            calc_percentage = ((recent_price - initial_price) / initial_price) * 100
+            calc_percentage = ((recent_price - initial_price) / initial_price) * 100  # Formula for calculating
+            # percentage growth
             record_percenage_for_each_year[each_year] = calc_percentage
     else:
         initial_price = 0
@@ -69,7 +71,8 @@ def benchmark_simulation(benchmark: str | list[str], start_date: str) -> dict[in
             recent_price = 0
             for each_stock in benchmark:
                 recent_price += get_price(each_stock, each_year)
-            calc_percentage = ((recent_price - initial_price) / initial_price) * 100
+            calc_percentage = ((recent_price - initial_price) / initial_price) * 100  # Formula for calculating
+            # percentage growth (return on investment)
             record_percenage_for_each_year[each_year] = calc_percentage
 
     return record_percenage_for_each_year
@@ -92,7 +95,7 @@ def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> di
     """
     start_year = int(start_date.split('-')[0]) + 1
     end_year = int(datetime.today().strftime('%Y'))  # Convert string end_date to int
-    record_percenage_for_each_year = {}
+    record_percentage_for_each_year = {}
 
     initial_price = 0
     if not buy_stocks == []:  # Avoid adding if list is empty
@@ -103,11 +106,12 @@ def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> di
         if not buy_stocks == []:
             for each_stock in buy_stocks:
                 recent_price += get_price(each_stock, each_year)
-        calc_percentage = 0  # This ensures that function do not divide by 0
-        if not buy_stocks == []:
-            calc_percentage = ((recent_price - initial_price) / initial_price) * 100
-        record_percenage_for_each_year[each_year] = calc_percentage
-    return record_percenage_for_each_year
+        calc_percentage = 0  # This ensures that function does not divide by 0
+        if not buy_stocks == []:  # Avoid adding if list is empty
+            calc_percentage = ((recent_price - initial_price) / initial_price) * 100  # Formula for calculating
+            # percentage growth
+        record_percentage_for_each_year[each_year] = calc_percentage
+    return record_percentage_for_each_year
 
 
 if __name__ == '__main__':
