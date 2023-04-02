@@ -1,7 +1,13 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 3)
 
+Description
+==============================================================
+This module contains code for RecommendationTree and necessary
+methods and functions that handles RecommendationTree
+functionality.
+
 Copyright and Usage Information
-===============================
+==============================================================
 
 This file is provided solely for the personal and private use of our group
 memebers at the University of Toronto St. George campus. All forms of
@@ -70,8 +76,8 @@ class RecommendationTree:
     def __str__(self) -> str:
         """Return a string representation of this tree.
 
-        Example)
-        # In terminal try:
+        In terminal try this example:
+
         # f1 = RecommendationTree('Factor 1', 0.5)
         # f2_left = RecommendationTree('Factor 2', 0.4)
         # f2_right = RecommendationTree('Factor 2', 0.4)

@@ -1,7 +1,7 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 2)
 
 Copyright and Usage Information
-===============================
+==============================================================
 
 This file is provided solely for the personal and private use of our group
 memebers at the University of Toronto St. George campus. All forms of
@@ -44,6 +44,9 @@ def filter_stocks(stock_list: list[str], end_date: str) -> list[str]:
     Preconditions:
         - end_date must be in the format of "YYYY-MM-DD"
         - stock_list != ""
+
+    >>> filter_stocks(['AAPL', 'MSFT'], '2010-01-01')
+    ['AAPL', 'MSFT']
     """
     list_so_far = []
     for stock in stock_list:
@@ -111,6 +114,9 @@ def top_half(sorted_list: list[tuple[str, float]]) -> list[tuple[str, float]]:
 
     Preconditions:
         - sorted_list != [] and len(sorted_list) >= 2
+
+    >>> top_half([('AAPL', 132.20943095468306), ('MSFT', 53.44226321349688)])
+    [('AAPL', 132.20943095468306)]
     """
     half_list = sorted_list[:len(sorted_list) // 2]  # Takes top half
     return half_list
@@ -251,12 +257,15 @@ def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
 def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> dict[str, float]:
     """
     Returns a dictionary of correlations in which the key is the factor in <factors> and the value is the
-    correlation value based on the factor.
+    correlation value based on the factor. Factor 'average-price' will be included as minimum requirement.
 
     Preconditions:
         - stock != ''
         - end_date must be in the format of "YYYY-MM-DD"
         - factors != []
+
+    >>> all_factors_correlation('AAPL', '2010-01-01', ['pe-ratio'])
+    {'pe-ratio': 0.7035086230529171, 'average-price': 0.9644461603074899}
     """
     dict_df = get_factors_data(stock, factors)
     copy_factors = factors + ['average-price']  # We don't want to mutate, thus make copy

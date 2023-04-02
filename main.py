@@ -1,7 +1,14 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks
 
+Description
+==============================================================
+This module contains the code for opening part 1 which it
+will run all the rest of codes. Due to Streamlit limitation,
+we had to have a important codes in part 1 and have a seperate
+file that runs part 1.
+
 Instructions (READ THIS FIRST!)
-===============================
+==============================================================
 
 1. All files must be at same level folder.
 2. Install requirements.
@@ -9,7 +16,7 @@ Instructions (READ THIS FIRST!)
 4. Choose options in website and click 'Run Program'.
 
 Copyright and Usage Information
-===============================
+==============================================================
 
 This file is provided solely for the personal and private use of our group
 memebers at the University of Toronto St. George campus. All forms of

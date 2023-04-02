@@ -1,7 +1,14 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 1)
 
+Description
+==============================================================
+This module takes user input from website and calls
+part 2, 3, 4, and use visualization function to plot graph.
+The function "Run Program" is most important function, thus,
+please read carefully.
+
 Copyright and Usage Information
-===============================
+==============================================================
 
 This file is provided solely for the personal and private use of our group
 memebers at the University of Toronto St. George campus. All forms of

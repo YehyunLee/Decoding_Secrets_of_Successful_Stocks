@@ -1,7 +1,7 @@
 """CSC111 Winter 2023 Phase 2: Decoding the Secrets of Successful Stocks (Part 4)
 
 Copyright and Usage Information
-===============================
+==============================================================
 
 This file is provided solely for the personal and private use of our group
 memebers at the University of Toronto St. George campus. All forms of
@@ -22,8 +22,8 @@ def get_price(stock: str, year: int) -> float:
     """
     Function gets the stock price at the current year
     Preconditions:
-    - stock! = ''
-    - Must be an existing year
+    - stock != ''
+    - year must be in the format of "YYYY-MM-DD" and should be less than or equal to current year
     """
     yahoo_financials = YahooFinancials(stock)  # This is to use Yahoo Finiance API, we need date interval.
     # For simplicity, this is set to Jan 1 to Jan 5,
