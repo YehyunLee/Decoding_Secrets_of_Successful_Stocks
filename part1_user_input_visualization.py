@@ -185,6 +185,10 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
     # Run Program
     if st.button('Run Program'):
         st.warning("Program is running...")
+        st.warning("If error is caused please change your options (e.g. Changing date closer to recent & "
+                   "Risk Percentage to 100%) or make sure your "
+                   "options did not violate preconditions. "
+                   "Highly recommend using default setting as it satisfy all preconditions.")
         st.info("Please wait while program is running. "
                 "Running usually takes 5 ~ 10 minutes, but this depends on user inputs. "
                 "If you click 'Run Program' again, it will re-run the program with updated options.")
@@ -204,28 +208,45 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
 def run_program(list_of_stocks: list[str], training_end_date: str, risk_percentage: int, factors: list[str]) -> \
         tuple[go.Figure, list[str], list[tuple[str, float]], list[str]]:
     """Runs the simulation and returns a graph showing the end results (brings information from part 2, 3 and 4)"""
+    # MOST IMPORTANT FUNCTION OF THE PROGRAM
+
     # [Part 2] Choosing the Main Influential Factors
+    # Filter stocks that's supported by API
     filter_stocks = part2_factor_data_processing.filter_stocks(list_of_stocks, training_end_date)
+    # Sort stocks based on their growth
     stocks_performance = part2_factor_data_processing.get_percentage_growth_of_stocks(filter_stocks, training_end_date)
+    # Take top half of stocks. Now, top_ranked_stocks are list of best stocks.
     top_ranked_stocks = part2_factor_data_processing.top_half(stocks_performance)
+    # Determine the factors of best stocks. Sorted based on their values.
     best_factors = part2_factor_data_processing.determining_best_factor(top_ranked_stocks, training_end_date, factors)
 
     # [Part 3] Recommendation Tree
+    # Create a RecommendationTree using sorted factors
     recommendation_tree = part3_recommendation_tree.create_recommendation_tree(best_factors, len(best_factors) - 1)
+    # Insert all user input stocks to RecommendationTree with their corresponding factor values.
+    # Their correlation value will be compared to best stocks average correlation value and determine whether to go
+    # left of right of subtrees. (For more information, please check LaTeX.)
     recommendation_tree.insert_stocks(filter_stocks, training_end_date, factors)
+    # Choose list of buy stocks by using user input risk percentage. (For more information, please check LaTeX.)
     buy_stocks = part3_recommendation_tree.determining_buy_stocks(recommendation_tree, risk_percentage)
 
     # [Part 4] Investment Simulation
+    # Run simulation of investment return of benchmark 'NASDAQ'
     benchmark_nasdaq_simulation = part4_investment_simulation.benchmark_simulation('^IXIC', training_end_date)
+    # Run simulation of investment return of benchmark 'S&P500'
     benchmark_s_and_p500_simulation = part4_investment_simulation.benchmark_simulation('^GSPC', training_end_date)
+    # Run simulation of investment return of benchmark 'All User Input Stocks'
     benchmark_all_stocks_simulation = part4_investment_simulation.benchmark_simulation(filter_stocks, training_end_date)
-    # Using Statistically Significant Factors
+    # Run simulation of investment return of 'Recommendation Tree Filtered Stocks'
+    # In other words, this is using statistically significant factors
     recommendation_tree_simulation = part4_investment_simulation.recommendation_tree_simulation(
         buy_stocks, training_end_date)
 
+    # Plot them into one figure
     fig = visualization(benchmark_nasdaq_simulation, benchmark_s_and_p500_simulation,
                         benchmark_all_stocks_simulation,
                         recommendation_tree_simulation)
+    # Return graph as index 0, and rest are statistics that will be used to prompt under the graph
     return (fig, filter_stocks, best_factors, buy_stocks)
 
 
@@ -257,6 +278,7 @@ def visualization(benchmark_nasdaq_simulation: dict[int, float], benchmark_s_and
     fig.add_trace(go.Scatter(x=recommendation_tree_years, y=recommendation_tree_values,
                              name='Recommendation Tree Filtered Stocks'))
 
+    # Add layout names e.g. title, x,y-axis name
     fig.update_layout(title='Simulation Results', xaxis_title='Year', yaxis_title='Return on Investment (%)')
     # Try fig.show()
     return fig

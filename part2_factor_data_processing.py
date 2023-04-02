@@ -243,6 +243,7 @@ def correlation(merged_df: pd.DataFrame | pd.Series) -> float:
     Returns the correlation of a single factor to  the stock price.
     """
     price_vs_factor_correlation = merged_df.corr(numeric_only=True)  # By default, pearson method.
+    # Takes the correlation of merged DataFrame
     return price_vs_factor_correlation[price_vs_factor_correlation.columns[1]][price_vs_factor_correlation.columns[0]]
 
 
@@ -261,8 +262,8 @@ def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> di
     copy_factors = factors + ['average-price']
     dict_of_correlations = {}
     for factor in copy_factors:
-        cleaned_data = clean_and_merge_data(factor, dict_df, end_date)
-        dict_of_correlations[factor] = correlation(cleaned_data)
+        cleaned_data = clean_and_merge_data(factor, dict_df, end_date)  # Clean and merge to DataFrame
+        dict_of_correlations[factor] = correlation(cleaned_data)  # Get correlation and save to dict
     return dict_of_correlations
 
 
@@ -275,7 +276,7 @@ def filter_nan(factors_correlation: dict[str, float]) -> bool:
         - factors_correlation != {}
     """
     for value in factors_correlation.values():
-        if math.isnan(value):
+        if math.isnan(value):  # Check if one of value is NaN
             return False
     return True
 

@@ -25,7 +25,9 @@ def get_price(stock: str, year: int) -> float:
     - stock! = ''
     - Must be an existing year
     """
-    yahoo_financials = YahooFinancials(stock)
+    yahoo_financials = YahooFinancials(stock)  # This is to use Yahoo Finiance API, we need date interval.
+    # For simplicity, this is set to Jan 1 to Jan 5,
+    # and the most recent data i.e. Jan 5th is taken (assuming this is not weekend.)
     data = yahoo_financials.get_historical_price_data(str(year) + '-01-01', str(year) + '-01-05', "daily")
     prices = data[stock]['prices']
     recent_price = prices[len(prices) - 1]['adjclose']
@@ -35,14 +37,14 @@ def get_price(stock: str, year: int) -> float:
 # @check_contracts
 def benchmark_simulation(benchmark: str | list[str], start_date: str) -> dict[int, float]:
     """
-    Function is using either NASDAQ or S&P500 as a benchmark.
+    Function is using either NASDAQ or S&P500 or All User Inpust Stocks as a benchmark.
     Creates a simulation starting from start date (which is the year after the data ends) to the
     end date (which is today's year).
-    This benchmark simulates how much the user will earn if the capital was invested into S&P500
-    or NASDAQ from start_date till most recent year
+    This benchmark simulates how much the user will earn if the capital was invested into NASDAQ
+    or S&P500 or All User Input Stocks from start_date till most recent year
     - '^IXIC' stands for NASDAQ
     - '^GSPC' stands for S&P500
-    Function outputs the date of year and the percentage profit made each year.
+    Function outputs the date of year and the percentage of the return on investment.
     E.g. {2016: 0.0, 2017: 12.823326415655877, 2018: 35.34277741767793, ... 2023: 91.43670094654134}
 
     Preconditions:
@@ -62,7 +64,7 @@ def benchmark_simulation(benchmark: str | list[str], start_date: str) -> dict[in
     else:
         initial_price = 0
         for each_stock in benchmark:
-            initial_price += get_price(each_stock, start_year)
+            initial_price += get_price(each_stock, start_year)  # Add all stock price as initial price
         for each_year in range(start_year, end_year + 1):
             recent_price = 0
             for each_stock in benchmark:
@@ -93,7 +95,7 @@ def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> di
     record_percenage_for_each_year = {}
 
     initial_price = 0
-    if not buy_stocks == []:
+    if not buy_stocks == []:  # Avoid adding if list is empty
         for each_stock in buy_stocks:
             initial_price += get_price(each_stock, start_year)
     for each_year in range(start_year, end_year + 1):

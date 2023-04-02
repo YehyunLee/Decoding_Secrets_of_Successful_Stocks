@@ -126,7 +126,8 @@ class RecommendationTree:
         if self._left_subtree.factor is None and self._right_subtree.factor is None:
             self._list_of_stocks.append(stock[0])
         else:
-            if stock[1][self.factor] <= self.correlation:
+            if stock[1][self.factor] <= self.correlation:  # Compare best stocks' correlation value and decide whether
+                # to left or right of subtree
                 self._left_subtree.move_stock_to_subtree(stock)
             else:
                 self._right_subtree.move_stock_to_subtree(stock)
@@ -153,21 +154,24 @@ class RecommendationTree:
         """
         leafs = self.get_leaf_recommendation_tree()
         leafs_with_stock = [leaf._list_of_stocks for leaf in leafs]
+        # Basically, this name each stock with their rank number
         return {i + 1: leaf for i, leaf in enumerate(leafs_with_stock)}
 
     def insert_stocks(self, stocks: list[str], end_date: str, factors: list[str]) -> None:
         """
-        Insert multiple stocks into
+        Insert multiple stocks into RecommendationTree
+
         Preconditions:
         - stocks != []
         - end_date must be in the format of "YYYY-MM-DD"
         - self.is_empty() is not None
         """
-        for stock in stocks:  # Classify each stock into game_tree
+        for stock in stocks:  # Classify each stock into RecommendationTree
             try:
+                # Get all their correlation values and then move to subtree.
                 self.move_stock_to_subtree(
                     (stock, part2_factor_data_processing.all_factors_correlation(stock, end_date, factors)))
-            except (etree.XMLSyntaxError, HTTPError):
+            except (etree.XMLSyntaxError, HTTPError):  # Do not move to subtree if the stock is not supported by API
                 continue
 
 
@@ -220,8 +224,8 @@ def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percent
     ranked_choices = recommendation_tree.ranked_choices_of_stocks()
     range_of_buy_leafs = len(ranked_choices) - ((len(ranked_choices) * risk_percentage) // 100)
     # Drop empty list and pick ranked list of stocks based on percentage risk
-    nested_buy_stocks = [ranked_choices[choices] for choices in ranked_choices if
-                         choices > range_of_buy_leafs and ranked_choices[choices] != []]
+    nested_buy_stocks = [ranked_choices[choices] for choices in ranked_choices if  # Filter stocks based on risk percent
+                         choices > range_of_buy_leafs and ranked_choices[choices] != []]  # Filter empty
     buy_stocks = [item for sublist in nested_buy_stocks for item in sublist]  # Converts nested list to flat list
     return buy_stocks
 
