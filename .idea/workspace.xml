@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="April 2nd Work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part3_recommendation_tree.py" afterDir="false" />
     </list>
     <list id="4a4b6880-104e-4eb5-9649-458d4df61af6" name="Changes by azmha" comment="March 31th Work" />
     <list id="89e93d42-bdaa-4b71-bdbc-d2e43e375ab0" name="Changes by Wonjae" comment="April 1st Work" />
@@ -519,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680455324160</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="April 2nd Work">
+      <created>1680455990011</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1680455990012</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

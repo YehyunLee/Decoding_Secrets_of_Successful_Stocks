@@ -183,7 +183,7 @@ class RecommendationTree:
 # @check_contracts
 def create_recommendation_tree(factors_correlation: list[tuple[str, float]], d: int) -> RecommendationTree:
     """
-    Create a complete recommendation tree of depth d. Inspired by generate_complete_game_tree from Assignment 2.
+    Create a complete recommendation tree of depth d. Inspired by generate_complete_game_tree from assignment 2.
     Customized to suit our <RecommendationTree> class
 
     For the returned Recommendation Tree:
