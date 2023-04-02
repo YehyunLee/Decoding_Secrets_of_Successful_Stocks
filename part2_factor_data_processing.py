@@ -259,7 +259,7 @@ def all_factors_correlation(stock: str, end_date: str, factors: list[str]) -> di
         - factors != []
     """
     dict_df = get_factors_data(stock, factors)
-    copy_factors = factors + ['average-price']
+    copy_factors = factors + ['average-price']  # We don't want to mutate, thus make copy
     dict_of_correlations = {}
     for factor in copy_factors:
         cleaned_data = clean_and_merge_data(factor, dict_df, end_date)  # Clean and merge to DataFrame
