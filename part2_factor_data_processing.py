@@ -30,7 +30,7 @@ from yahoofinancials import YahooFinancials
 def read_csv() -> list[str]:
     """Load data from csv file (filled with names of stocks) and return it in a list
     """
-    csv_file = 'good&bad_stocks.csv'
+    csv_file = 'good_bad_stocks.csv'
     stocks_list = []
     with open(csv_file) as file:
         reader = csv.reader(file, delimiter=',')

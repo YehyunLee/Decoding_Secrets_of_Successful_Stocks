@@ -140,7 +140,7 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
 
     st.info("Default value is recommended.")
     end_datetime = st.date_input(
-        "When\'s you will like to start investing?",
+        "When would you like to start investing?",
         datetime.date(2016, 3, 25)) - timedelta(days=365)
     st.write('Program will train from 2009 to', end_datetime, 'and start investing', end_datetime + timedelta(days=365))
     end_date = str(end_datetime)
