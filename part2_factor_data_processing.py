@@ -11,13 +11,13 @@ please consult Yehyun Lee at yehyun.lee@mail.utoronto.ca.
 
 This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
-from yahoofinancials import YahooFinancials
+from urllib.error import HTTPError  # Same case
+import csv
+import math
 import pandas as pd
 import requests
-import csv
 from lxml import etree  # This is only used for except statement. This is auto imported by pandas.
-from urllib.error import HTTPError  # Same case
-import math
+from yahoofinancials import YahooFinancials
 # from python_ta.contracts import check_contracts
 
 
@@ -51,7 +51,9 @@ def filter_stocks(stock_list: list[str], end_date: str) -> list[str]:
             filter_stock = get_percentage_growth(stock, end_date)
             if isinstance(filter_stock, float):
                 list_so_far.append(stock)
-        except(KeyError, IndexError, ValueError, TypeError, ImportError, AssertionError, ConnectionResetError, OSError):
+        # Do not add stock if they cause one of these errors
+        except (KeyError, IndexError, ValueError, TypeError, ImportError, AssertionError, ConnectionResetError, OSError
+                ):
             continue
     return list_so_far
 
@@ -93,7 +95,8 @@ def get_percentage_growth_of_stocks(stock_list: list[str], end_date: str) -> lis
         try:
             list_so_far.append((stock, get_percentage_growth(stock, end_date)))
         # Do not add stock if they cause one of these errors
-        except(KeyError, IndexError, ValueError, TypeError, ImportError, AssertionError, ConnectionResetError, OSError):
+        except (KeyError, IndexError, ValueError, TypeError, ImportError, AssertionError, ConnectionResetError, OSError
+                ):
             continue
     sorted_list = sorted(list_so_far, key=lambda x: x[1], reverse=True)
     return sorted_list
