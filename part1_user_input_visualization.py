@@ -263,21 +263,22 @@ def visualization(benchmark_nasdaq_simulation: dict[int, float], benchmark_s_and
 
 
 if __name__ == '__main__':
-    # import doctest
-    # doctest.testmod(verbose=True)
-    #
-    # import python_ta
-    # python_ta.check_all(config={
-    #     'extra-imports': ['part2_factor_data_processing', 'part3_recommendation_tree', 'part3_recommendation_tree',
-    #                       'part4_investment_simulation', 'plotly.graph_objs', 'datetime', 'PIL', 'streamlit'],
-    #     # the names (strs) of imported modules
-    #     'allowed-io': ['user_input'],  # the names (strs) of functions that call print/open/input
-    #     'max-line-length': 120,
-    #     'disable': ['trailing-whitespace', 'consider-using-f-string', 'too-many-statements', 'eval-used']
-    #     # These disable options are all for streamlit limitation.
-    #     # 'trailing-whitespace': First sentence cannot have tab. Thus, blank symbol is included, then tab is added.
-    #     # 'consider-using-f-string': Markdown cannot have f string.
-    #     # 'too-many-statements' and 'eval-used' is needed for perfectness of website.
-    # })
+    import doctest
+    doctest.testmod(verbose=True)
+
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['part2_factor_data_processing', 'part3_recommendation_tree', 'part3_recommendation_tree',
+                          'part4_investment_simulation', 'plotly.graph_objs', 'datetime', 'PIL', 'streamlit'],
+        # the names (strs) of imported modules
+        'allowed-io': ['user_input'],  # the names (strs) of functions that call print/open/input
+        'max-line-length': 120,
+        'disable': ['trailing-whitespace', 'consider-using-f-string', 'too-many-statements', 'eval-used']
+        # These disable options are all for streamlit limitation.
+        # 'trailing-whitespace': First sentence cannot have tab. Thus, blank symbol is included, then tab is added.
+        # 'consider-using-f-string': Markdown cannot have f string.
+        # 'too-many-statements' and 'eval-used' is needed for perfectness of website. It's just little details,
+        # thus we had to include.
+    })
 
     user_input()

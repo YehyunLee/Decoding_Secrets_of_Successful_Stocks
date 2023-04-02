@@ -126,6 +126,11 @@ def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
              'debt-equity-ratio', 'roi', 'cash-on-hand', 'total-share-holder-equity', 'revenue', 'gross-profit',
              'net-income', 'shares-outstanding', 'stock-price-history']
     """
+    # IMPORTANT:
+    # This code was actually very simple. I was using pandas' iloc method.
+    # However, python-ta causes error saying contact instructor with error message.
+    # But since Professor and TA is not replying to our question, I changed iloc to filter method.
+    # Thus, code got a bit complicated.
     data = pd.read_html(link, skiprows=1)
     df = pd.DataFrame(data[0])  # Skip header
     df = pd.concat([df.columns.to_frame().T, df], ignore_index=True)  # Make it to frame
@@ -134,11 +139,11 @@ def obtain_factor_data(link: str, get_price: bool) -> pd.DataFrame | pd.Series:
     # Average price and stock price is on the same page, thus, function needs to split the cases.
     if get_price is False:
         if 'stock-price-history' in link:
-            df = df.iloc[:, [0, 1]]  # Get average price
+            df = df.filter(items=[df.columns[0], df.columns[1]])  # Get average price
         else:
-            df = df.iloc[:, [0, -1]]  # Get other factors data
+            df = df.filter(items=[df.columns[0], df.columns[-1]])  # Get other factors data
     else:
-        df = df.iloc[:, [0, -2]]  # Get stock price
+        df = df.filter(items=[df.columns[0], df.columns[-2]])  # Get stock price
     return df
 
 
@@ -189,30 +194,39 @@ def clean_and_merge_data(factor: str, dict_df: dict[str, pd.DataFrame | pd.Serie
         - end_date must be in the format of "YYYY-MM-DD"
         - dict_df != {}
     """
-    end_year = int(end_date.split('-')[0])
+    # IMPORTANT:
+    # This code was actually very simple. I was using pandas' iloc method.
+    # However, python-ta causes error saying contact instructor with error message.
+    # But since Professor and TA is not replying to our question, I changed iloc to filter method.
+    # Thus, code got a bit complicated.
+    end_year = int(end_date.split('-')[0])  # Take year only and change to integer.
 
     df1 = dict_df['price']
     df2 = dict_df[factor]
-    min_rows = min(df1.shape[0], df2.shape[0])
-    df1 = df1.iloc[:min_rows]
-    df2 = df2.iloc[:min_rows]
-    merged_df = pd.concat([df1, df2.iloc[:, -1]], axis=1)
-    merged_df.dropna(inplace=True)  # Drop NaN
+    min_rows = min(df1.shape[0], df2.shape[0])  # Take minimum rows.
+    df1 = df1.head(min_rows)  # Using ^ above variable, cut out the rows and merge them together as same length of rows.
+    df2 = df2.head(min_rows)
+    # Used to be iloc, but changed to using filter. This merges two DataFrames into one.
+    merged_df = pd.concat([df1, df2.filter(items=[df2.columns[-1]])], axis=1)
+    # Originally there was an error where it would return an empty dataframe. So dropping NaN is important.
+    merged_df.dropna(inplace=True)  # Drop NaN.
 
     # Change the date column into integers
     try:
         merged_df[merged_df.columns[0]] = merged_df[merged_df.columns[0]].astype(int)
+        # If this doesn't work, first need to remove '-' dash and then convert to integer.
     except ValueError:
         merged_df[merged_df.columns[0]] = merged_df[merged_df.columns[0]].str.replace('-', '', regex=True).astype(int)
 
     # Select dates up to end date.
+    # '<=' inequality is needed to select one with correct end year.
     merged_df = merged_df.loc[merged_df[0] <= end_year].reset_index(drop=True)
 
-    merged_df = merged_df.iloc[:, -2:]  # Deletes dates
-    merged_df[merged_df.columns[0]] = merged_df[merged_df.columns[0]].astype(float)
+    merged_df = merged_df.filter(items=[merged_df.columns[-2], merged_df.columns[-1]])  # Deletes dates
+    merged_df[merged_df.columns[0]] = merged_df[merged_df.columns[0]].astype(float)  # Convert to float type.
     try:
-        merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].astype(float)
-    except ValueError:
+        merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].astype(float)  # If not work, then use except.
+    except ValueError:  # Remove unnecessary symbols and then convert to float.
         merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].str.replace('$', '', regex=True)
         merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].str.replace('%', '', regex=True)
         merged_df[merged_df.columns[1]] = merged_df[merged_df.columns[1]].str.replace(',', '', regex=True).astype(float)
@@ -289,17 +303,19 @@ def determining_best_factor(top_ranked_stocks: list[tuple[str, float]], end_date
         combined_tuple = tuple(each_top_stock[factor] for each_top_stock in lst_of_dict)
         average_factor_correlation[factor] = sum(combined_tuple) / len(combined_tuple)
 
-    convert_to_tuple = [(factor, correlation_value) for factor, correlation_value in average_factor_correlation.items()]
+    convert_to_tuple = list((factor_name, correlation_value) for factor_name, correlation_value in
+                            average_factor_correlation.items())
     sorted_tuple = sorted(convert_to_tuple, key=lambda x: x[1])  # Sort factors based on their average correlation value
     return sorted_tuple
 
 
-# if __name__ == '__main__':
-#     import doctest
-#     doctest.testmod(verbose=True)
-#
-#     import python_ta
-#     python_ta.check_all(config={
-#         'extra-imports': ['yahoofinancials', 'pandas', 'requests', 'csv', 'lxml', 'urllib.error', 'math'],
-#         'max-line-length': 120
-#     })
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
+
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['yahoofinancials', 'pandas', 'requests', 'csv', 'lxml', 'urllib.error', 'math'],
+        'max-line-length': 120,
+        'allowed-io': ['read_csv']  # the names (strs) of functions that call print/open/input
+    })
