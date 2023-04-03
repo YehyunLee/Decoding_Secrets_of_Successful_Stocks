@@ -82,9 +82,9 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
     profitability of the investments.""")
 
     st.write("""⠀\tWe aim to determine the most promising stocks for investment by
-    analyzing the correlation between their performance metrics. Based on the analysis, we will rank the stocks
-    using a binary tree to group the stock by ranking for investment. We will then simulate backtesting results
-    based on the conclusions drawn from the correlation analysis and historical data.""")
+    analyzing the correlation between their performance metrics. Based on the analysis, we will ranks the factors
+    and create a binary tree from the factors. Then, we will filter stocks accordingly and invest in what the
+    binary tree suggests. Lastly, using backtesting data we will draw conclusions on its performance.""")
 
     # Subheader
     st.subheader("Motivation")

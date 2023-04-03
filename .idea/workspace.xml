@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="April 2nd Work">
-      <change afterPath="$PROJECT_DIR$/LaTeX/CSC111.drawio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/ai_diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/choosing_stocks.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/dataset.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/firewall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/project_proposal.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/project_proposal.tex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/refs.bib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/sample_tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/streamlit_prompt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/tree_diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/tree_node.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/tree_traversal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LaTeX/visualization.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/project_proposal.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/project_proposal.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/CSC111_Project_Phase_2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/project_proposal.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/project_proposal.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/CSC111_Project_Phase_2.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part1_user_input_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_user_input_visualization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part2_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_factor_data_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part3_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part3_recommendation_tree.py" afterDir="false" />
     </list>
     <list id="4a4b6880-104e-4eb5-9649-458d4df61af6" name="Changes by azmha" comment="March 31th Work" />
     <list id="89e93d42-bdaa-4b71-bdbc-d2e43e375ab0" name="Changes by Wonjae" comment="April 2nd Work" />
@@ -59,15 +53,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "C:/Users/glad7/PycharmProjects/CSC111-Project/LaTeX",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/glad7/PycharmProjects/CSC111-Project/LaTeX&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings>
@@ -77,9 +71,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\glad7\PycharmProjects\CSC111-Project\LaTeX" />
       <recent name="C:\Users\glad7\PycharmProjects\CSC111-Project" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\glad7\PycharmProjects\CSC111-Project\LaTeX" />
       <recent name="C:\Users\glad7\PycharmProjects\CSC111-Project" />
       <recent name="C:\Users\glad7\PycharmProjects\CSC111-Project\Test" />
       <recent name="C:\Users\glad7\PycharmProjects\CSC111 Project" />
@@ -87,7 +83,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python tests.Doctests in part2_factor_data_processing">
-    <configuration name="part1_user_input_visualization" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC111-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -99,7 +95,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/part1_user_input_visualization.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,9 +183,9 @@
       <list>
         <item itemvalue="Python tests.Doctests in part2_factor_data_processing" />
         <item itemvalue="Python.part2_factor_data_processing" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Doctest all_factors_correlation" />
         <item itemvalue="Python tests.Doctest filter_stocks" />
-        <item itemvalue="Python.part1_user_input_visualization" />
       </list>
     </recent_temporary>
   </component>
@@ -201,13 +197,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677713145964</updated>
-    </task>
-    <task id="LOCAL-00004" summary="March 26th">
-      <created>1679804455324</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1679804455324</updated>
     </task>
     <task id="LOCAL-00005" summary="March 27th Work">
       <created>1679953757336</created>
@@ -545,7 +534,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680469179884</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="April 2nd Work">
+      <created>1680469508463</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1680469508463</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

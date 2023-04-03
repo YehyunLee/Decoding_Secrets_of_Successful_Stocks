@@ -48,7 +48,7 @@ def filter_stocks(stock_list: list[str], end_date: str) -> list[str]:
 
     Preconditions:
         - end_date must be in the format of "YYYY-MM-DD"
-        - stock_list != ""
+        - stock_list != [] and len(stock_list) >= 2
 
     >>> filter_stocks(['AAPL', 'MSFT'], '2010-01-01')
     ['AAPL', 'MSFT']
