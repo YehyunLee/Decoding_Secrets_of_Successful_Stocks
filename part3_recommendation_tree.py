@@ -245,4 +245,4 @@ def determining_buy_stocks(recommendation_tree: RecommendationTree, risk_percent
 #         # the names (strs) of imported modules
 #         'extra-imports': ['part2_factor_data_processing', 'urllib.error', 'lxml'],
 #         'max-line-length': 120
-    })
+#     })
