@@ -86,3 +86,6 @@ Part0,1,2,3 renamed to 1,2,3,4
 - Main
 - Debugging
 - LaTeX
+
+<April 3>
+- Fixed bugs and few files

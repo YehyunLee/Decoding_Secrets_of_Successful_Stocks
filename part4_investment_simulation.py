@@ -120,12 +120,12 @@ def recommendation_tree_simulation(buy_stocks: list[str], start_date: str) -> di
     return record_percentage_for_each_year
 
 
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod(verbose=True)
-
-    import python_ta
-    python_ta.check_all(config={
-        'extra-imports': ['datetime', 'yahoofinancials'],  # the names (strs) of imported modules
-        'max-line-length': 120
-    })
+# if __name__ == '__main__':
+#     import doctest
+#     doctest.testmod(verbose=True)
+#
+#     import python_ta
+#     python_ta.check_all(config={
+#         'extra-imports': ['datetime', 'yahoofinancials'],  # the names (strs) of imported modules
+#         'max-line-length': 120
+#     })

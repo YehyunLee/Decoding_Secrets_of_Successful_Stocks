@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="April 2nd Work">
+    <list default="true" id="29e3e45e-6416-4988-80b3-f651ee3964d1" name="Changes" comment="April 3rd Work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/project_proposal.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/project_proposal.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/CSC111_Project_Phase_2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/project_proposal.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/project_proposal.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/CSC111_Project_Phase_2.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Development Note.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Development Note.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part1_user_input_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/part1_user_input_visualization.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part2_factor_data_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/part2_factor_data_processing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/part3_recommendation_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/part3_recommendation_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part4_investment_simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/part4_investment_simulation.py" afterDir="false" />
     </list>
     <list id="4a4b6880-104e-4eb5-9649-458d4df61af6" name="Changes by azmha" comment="March 31th Work" />
     <list id="89e93d42-bdaa-4b71-bdbc-d2e43e375ab0" name="Changes by Wonjae" comment="April 2nd Work" />
@@ -197,13 +194,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677713145964</updated>
-    </task>
-    <task id="LOCAL-00005" summary="March 27th Work">
-      <created>1679953757336</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1679953757336</updated>
     </task>
     <task id="LOCAL-00006" summary="V1">
       <created>1679953795629</created>
@@ -541,7 +531,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680469508463</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="April 3rd Work">
+      <created>1680537297513</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1680537297513</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -570,6 +567,7 @@
     <MESSAGE value="V2" />
     <MESSAGE value="April 1st Work" />
     <MESSAGE value="April 2nd Work" />
-    <option name="LAST_COMMIT_MESSAGE" value="April 2nd Work" />
+    <MESSAGE value="April 3rd Work" />
+    <option name="LAST_COMMIT_MESSAGE" value="April 3rd Work" />
   </component>
 </project>
