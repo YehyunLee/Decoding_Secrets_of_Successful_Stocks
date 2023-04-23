@@ -17,7 +17,6 @@ please consult Yehyun Lee at yehyun.lee@mail.utoronto.ca.
 
 This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
-
 from __future__ import annotations
 from typing import Optional
 from urllib.error import HTTPError  # Same case

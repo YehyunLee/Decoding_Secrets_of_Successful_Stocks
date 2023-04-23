@@ -17,7 +17,7 @@ please consult Yehyun Lee at yehyun.lee@mail.utoronto.ca.
 
 This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 """
-
+from __future__ import annotations
 from datetime import datetime
 from yahoofinancials import YahooFinancials
 # from python_ta.contracts import check_contracts
