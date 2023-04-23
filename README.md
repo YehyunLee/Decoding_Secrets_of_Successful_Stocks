@@ -1,3 +1,7 @@
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://yehyunlee-csc111-project-part1-user-input-visualization-44zweb.streamlit.app/)
+
+[Open Formal LaTeX Documentation](https://github.com/YehyunLee/CSC111-Project/blob/master/LaTeX/CSC111_Project_Phase_2.pdf)
+
 # **Decoding the Secrets of Successful Stocks**
 
 
