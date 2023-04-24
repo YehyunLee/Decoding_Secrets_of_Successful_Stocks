@@ -1,6 +1,6 @@
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://yehyunlee-csc111-project-part1-user-input-visualization-44zweb.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]()
 
-[Open Formal LaTeX Documentation](https://github.com/YehyunLee/CSC111-Project/blob/master/LaTeX/CSC111_Project_Phase_2.pdf)
+[Open Formal LaTeX Documentation](https://github.com/YehyunLee/Decoding_Secrets_of_Successful_Stocks/blob/master/LaTeX/CSC111_Project_Phase_2.pdf)
 
 # **Decoding the Secrets of Successful Stocks**
 
@@ -33,7 +33,7 @@ This file is Copyright (c) 2023 Yehyun Lee, Aung Zwe Maw and Wonjae Lee.
 
 ⠀ One of the reasons for this project is the increase in interest in stocks during and after the pandemic. Many people have turned to invest in stocks to make passive income or grow their savings during a time of economic uncertainty. However, with so many companies to choose from, it can be challenging to know which ones are most likely to provide a good return on investment. By using past datasets, we can analyze historical data, current market trends, and other relevant factors to identify the companies that are confused to perform well in the future. This can help investors make more informed ed decisions about where to put their money and maximize their returns. Another motivation for developing a stock market investment program is the passion of one of our partners, Yehyun Lee for stock market trends. His passion positively affected us and we were also willing to explore the trends along with him.
 
-For more information about our project, please visit [Yehyun's Github](https://github.com/YehyunLee/CSC111-Project) and check the LaTeX file.
+For more information about our project, please visit [LaTeX File](https://github.com/YehyunLee/Decoding_Secrets_of_Successful_Stocks/blob/master/LaTeX/CSC111_Project_Phase_2.pdf).
 
 *Credits*
 

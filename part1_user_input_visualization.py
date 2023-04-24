@@ -100,7 +100,7 @@ This page is Copyright (c) 2023 Yehyun Lee.""")
     program is the passion of one of our partners, Yehyun Lee for stock market trends. His passion positively
     affected us and we were also willing to explore the trends along with him.""")
 
-    url = "https://github.com/YehyunLee/CSC111-Project"
+    url = "https://github.com/YehyunLee/Decoding_Secrets_of_Successful_Stocks"
     st.write("For more information about our project, please visit [Yehyun's Github](%s) and check the LaTeX file"
              "." % url)
 
