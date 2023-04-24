@@ -1,4 +1,4 @@
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]()
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://yehyunlee-decoding-secret-part1-user-input-visualization-oimadt.streamlit.app/)
 
 [Open Formal LaTeX Documentation](https://github.com/YehyunLee/Decoding_Secrets_of_Successful_Stocks/blob/master/LaTeX/CSC111_Project_Phase_2.pdf)
 
