@@ -19,7 +19,7 @@ What's Done:
 <March 4~5>
 - Done many meetings
 - Decided APIs
-- Took 2 days to test APIs and write demo codes 
+- Took 2 days to test APIs and write demo codes
 - Finished writing Goal, Motivation, Required Knowledge with Hisham
 - Sam is working on LaTex file. Moving what I and Hisham wrote on Doc to Latex
 
@@ -89,3 +89,4 @@ Part0,1,2,3 renamed to 1,2,3,4
 
 <April 3>
 - Fixed bugs and few files
+- Finished with Project
